@@ -25,7 +25,8 @@ export const lineHeight = {
 
 export const fontWeight = {
   normal: 400,
-  bold: 700
+  bold: 700,
+  extrabold: 800
 }
 
 export const borderRadius = {
@@ -34,6 +35,8 @@ export const borderRadius = {
 }
 
 export const fontFamily = {
+  sora: 'Sora, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+  lato: 'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
   sans: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
   serif: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
   mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
