@@ -9,16 +9,16 @@ import BaseLayout from './components/BaseLayout'
 import Text from './components/Text'
 import {spacing, fontSize} from './theme'
 
-type AccountCreatedProps = {name: string}
+type TestProps = {name: string}
 
-const AccountCreated: Template<AccountCreatedProps> = ({name}) => (
-  <BaseLayout width={600} preview="Excited to help you enjoy great meals.">
-    <Header loose />
-    <MjmlSection cssClass="lg-gutter" paddingBottom={spacing.s9}>
+const Test: Template<TestProps> = ({name}) => (
+  <BaseLayout width={480} preview="Excited to help you enjoy great meals.">
+    <Header />
+    {/* <MjmlSection cssClass="lg-gutter" paddingBottom={spacing.s9}>
       <MjmlColumn>
         <MjmlImage align="left" src="https://s3.amazonaws.com/lab.campsh.com/bb-hero%402x.jpg" />
       </MjmlColumn>
-    </MjmlSection>
+    </MjmlSection> */}
     <MjmlSection cssClass="gutter">
       <MjmlColumn>
         <Heading fontSize={fontSize.xl}>{name}, your table awaits.</Heading>
@@ -38,6 +38,6 @@ const AccountCreated: Template<AccountCreatedProps> = ({name}) => (
   </BaseLayout>
 )
 
-AccountCreated.subject = ({name}) => `Welcome to BookBook, ${name}!`
+Test.subject = ({name}) => `Welcome to BookBook, ${name}!`
 
-export default AccountCreated
+export default Test

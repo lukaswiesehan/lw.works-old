@@ -1,15 +1,10 @@
-import React from 'react'
 import {MjmlSection, MjmlColumn, MjmlImage} from 'mjml-react'
 
-type HeaderProps = {
-  loose?: boolean
-}
-
-const Header: React.FC<HeaderProps> = ({loose}) => {
+const Header = () => {
   return (
-    <MjmlSection padding={loose ? '48px 0 40px' : '48px 0 24px'}>
+    <MjmlSection padding="64px 0 64px">
       <MjmlColumn>
-        <MjmlImage padding="0 24px 0" width="64px" height="37px" align="center" src="https://lwworks.vercel.app/images/logo.svg" cssClass="invert" />
+        <MjmlImage padding="0" width="48px" height="28px" align="center" src="https://lwworks.vercel.app/images/logo.svg" cssClass="invert" />
       </MjmlColumn>
     </MjmlSection>
   )

@@ -57,6 +57,12 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
             overflow: hidden;
             mso-hide: all;
           }
+          .gradient-background {
+            background-image: url("https://lwworks.vercel.app/images/background-light.jpg");
+            background-size: 100% auto;
+            background-position: center top;
+            background-repeat: no-repeat;
+          }
 
           /* Large screens */
           @media (min-width:${screens.xs}) {
@@ -77,6 +83,9 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
               max-height: none !important;
               overflow: visible !important;
               mso-hide: none !important;
+            }
+            .gradient-background {
+              background-size: ${screens.xs} auto;
             }
           }
 
@@ -105,11 +114,16 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
               overflow: hidden;
               mso-hide: all;
             }
+            .gradient-background {
+              background-image: url("https://lwworks.vercel.app/images/background-dark.jpg");
+            }
           }
       `}</MjmlStyle>
       </MjmlHead>
 
-      <MjmlBody width={width}>{children}</MjmlBody>
+      <MjmlBody width={width} cssClass="gradient-background">
+        {children}
+      </MjmlBody>
     </Mjml>
   )
 }
