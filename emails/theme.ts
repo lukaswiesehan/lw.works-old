@@ -7,7 +7,8 @@ export const colors = {
   neutral400: '#888',
   neutral500: '#777',
   neutral600: '#666',
-  neutral800: '#444'
+  neutral800: '#444',
+  bgDark: '#101624'
 }
 
 export const fontSize = {

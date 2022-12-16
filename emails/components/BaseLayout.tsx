@@ -83,7 +83,7 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
           /* Dark Mode */
           @media (prefers-color-scheme: dark) {
             body {
-              background: ${colors.black};
+              background: ${colors.bgDark};
             }
             .invert > * {
               filter: invert(1) !important;
