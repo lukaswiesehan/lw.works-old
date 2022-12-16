@@ -29,6 +29,9 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
           a {
             color: inherit
           }
+          .text b {
+            color: #000 !important;
+          }
           .gutter {
             padding-left: ${spacing.s7}px;
             padding-right: ${spacing.s7}px;
@@ -62,6 +65,12 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
             background-size: 100% auto;
             background-position: center top;
             background-repeat: no-repeat;
+          }
+          .signature-left {
+            width: 48px !important;
+          }
+          .signature-right {
+            width: calc(100%-48px) !important;
           }
 
           /* Large screens */
@@ -98,6 +107,12 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
               filter: invert(1) !important;
             }
             .text > * {
+              color: #CBD5E1 !important;
+            }
+            .heading > * {
+              color: #fff !important;
+            }
+            .text b {
               color: #fff !important;
             }
             .dark-mode {

@@ -35,7 +35,7 @@ const Test: Template<TestProps> = ({name}) => (
         </Text>
       </MjmlColumn>
     </MjmlSection>
-    <Signature />
+    <Signature greeting="Ich wünsch' Dir eine schöne Zeit —" />
     <Footer includeUnsubscribe />
   </BaseLayout>
 )

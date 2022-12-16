@@ -1,6 +1,7 @@
 import React from 'react'
 import Text from './Text'
-import {fontFamily, lineHeight, fontWeight, fontSize} from '../theme'
+import {MjmlText} from 'mjml-react'
+import {fontFamily, lineHeight, fontWeight, fontSize, colors} from '../theme'
 
 type HeadingProps = React.ComponentProps<typeof Text>
 
@@ -8,13 +9,14 @@ const defaultProps = {
   fontFamily: fontFamily.sora,
   fontWeight: fontWeight.extrabold,
   lineHeight: lineHeight.tight,
-  fontSize: fontSize.lg
+  fontSize: fontSize.xl,
+  color: colors.black
 }
 
 export default function Heading(props: HeadingProps) {
   return (
-    <Text {...defaultProps} {...props}>
+    <MjmlText {...defaultProps} {...props} cssClass="heading">
       {props.children}
-    </Text>
+    </MjmlText>
   )
 }

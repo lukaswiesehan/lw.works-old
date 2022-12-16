@@ -1,16 +1,43 @@
-import {MjmlSection, MjmlColumn, MjmlImage} from 'mjml-react'
+import {MjmlSection, MjmlGroup, MjmlColumn, MjmlImage} from 'mjml-react'
 import Text from './Text'
+import {lineHeight} from '../theme'
+import {FC} from 'react'
 
-const Signature = () => {
+type SignatureProps = {
+  greeting?: string
+}
+
+const Signature: FC<SignatureProps> = ({greeting = 'Viele Grüße —'}) => {
   return (
-    <MjmlSection>
-      <MjmlColumn width="48px" backgroundColor={'#ffffff'}>
-        <MjmlImage padding="0" width="48px" height="48px" align="left" src="https://lwworks.vercel.app/images/lukaswiesehan.png" />
-      </MjmlColumn>
-      <MjmlColumn>
-        <Text>Lukas Wiesehan</Text>
-      </MjmlColumn>
-    </MjmlSection>
+    <>
+      <MjmlSection padding="48px 0 16px" textAlign="left" cssClass="gutter">
+        <MjmlColumn width="100%">
+          <Text>{greeting}</Text>
+        </MjmlColumn>
+      </MjmlSection>
+      <MjmlSection padding="0 0 16px" textAlign="left" cssClass="gutter">
+        <MjmlGroup>
+          <MjmlColumn verticalAlign="middle" cssClass="signature-left">
+            <MjmlImage
+              padding="0"
+              width="48px"
+              height="48px"
+              align="left"
+              src="https://lwworks.vercel.app/images/lukaswiesehan.png"
+              border="1px solid #A5B4FC"
+              border-radius="24px"
+            />
+          </MjmlColumn>
+          <MjmlColumn padding="0 16px" verticalAlign="middle" width="70%" cssClass="signature-right">
+            <Text lineHeight={lineHeight.tight}>
+              <b>Lukas Wiesehan</b>
+              <br />
+              Designer & Developer
+            </Text>
+          </MjmlColumn>
+        </MjmlGroup>
+      </MjmlSection>
+    </>
   )
 }
 
