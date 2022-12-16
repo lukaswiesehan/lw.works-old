@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import BaseLayout from './components/BaseLayout'
 import Text from './components/Text'
 import {spacing, fontSize} from './theme'
+import Signature from './components/Signature'
 
 type TestProps = {name: string}
 
@@ -34,6 +35,7 @@ const Test: Template<TestProps> = ({name}) => (
         </Text>
       </MjmlColumn>
     </MjmlSection>
+    <Signature />
     <Footer includeUnsubscribe />
   </BaseLayout>
 )
