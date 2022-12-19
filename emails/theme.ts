@@ -1,18 +1,16 @@
 export const colors = {
   black: '#000',
   white: '#FFF',
-  gold: '#FADF98',
-  neutral100: '#F5F5F5',
-  neutral200: '#EEE',
-  neutral400: '#888',
-  neutral500: '#777',
-  neutral600: '#666',
-  neutral800: '#444',
-  bgDark: '#101624'
+  bgDark: '#101624',
+  slate300: '#cbd5e1',
+  slate400: '#94a3b8',
+  slate500: '#64748b',
+  slate600: '#475569',
+  indigo400: '#818cf8',
+  indigo500: '#6366f1'
 }
 
 export const fontSize = {
-  xs: 12,
   sm: 14,
   base: 16,
   lg: 24,
@@ -42,17 +40,11 @@ export const fontFamily = {
 }
 
 export const spacing = {
-  s0: 0,
-  s1: 4,
-  s3: 8,
-  s4: 12,
-  s5: 16,
-  s6: 20,
-  s7: 24,
-  s8: 32,
-  s9: 40,
-  s10: 48,
-  s11: 56
+  xs: 12,
+  sm: 20,
+  md: 32,
+  lg: 40,
+  xl: 48
 }
 
 export const screens = {
@@ -65,6 +57,6 @@ export const themeDefaults = {
   lineHeight: lineHeight.relaxed,
   fontWeight: fontWeight.normal,
   fontSize: fontSize.base,
-  color: colors.black,
-  padding: 0
+  padding: 0,
+  color: colors.slate600
 }

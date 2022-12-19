@@ -1,7 +1,7 @@
 import React from 'react'
 import Text from './Text'
 import {MjmlText} from 'mjml-react'
-import {fontFamily, lineHeight, fontWeight, fontSize, colors} from '../theme'
+import {fontFamily, lineHeight, fontWeight, fontSize, colors, spacing} from '../theme'
 
 type HeadingProps = React.ComponentProps<typeof Text>
 

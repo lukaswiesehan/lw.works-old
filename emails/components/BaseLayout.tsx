@@ -27,33 +27,22 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
             -webkit-font-smoothing: antialiased;
           }
           a {
-            color: inherit
+            color: ${colors.indigo500};
+          }
+          .footer a {
+            color: inherit !important;
           }
           .text b {
             color: #000 !important;
           }
-          .gutter {
-            padding-left: ${spacing.s7}px;
-            padding-right: ${spacing.s7}px;
+          .border-top {
+            border-top: 1px solid #f1f5f9;
           }
-          .no-wrap {
-            white-space: nowrap;
+          .gutter {
+            padding-left: ${spacing.md}px;
+            padding-right: ${spacing.md}px;
           }
           .dark-mode {
-            display: none;
-            max-width: 0px;
-            max-height: 0px;
-            overflow: hidden;
-            mso-hide: all;
-          }
-          .hidden {
-            display: none;
-            max-width: 0px;
-            max-height: 0px;
-            overflow: hidden;
-            mso-hide: all;
-          }
-          .lg-hidden {
             display: none;
             max-width: 0px;
             max-height: 0px;
@@ -72,33 +61,14 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
           .signature-right {
             width: calc(100%-48px) !important;
           }
-
-          /* Large screens */
+          .footer {
+            color: ${colors.slate400} !important;
+          }
           @media (min-width:${screens.xs}) {
-            .lg-gutter {
-              padding-left: ${spacing.s7}px !important;
-              padding-right: ${spacing.s7}px !important;
-            }
-            .sm-hidden {
-              display: none;
-              max-width: 0px;
-              max-height: 0px;
-              overflow: hidden;
-              mso-hide: all;
-            }
-            .lg-hidden {
-              display: block !important;
-              max-width: none !important;
-              max-height: none !important;
-              overflow: visible !important;
-              mso-hide: none !important;
-            }
             .gradient-background {
               background-size: ${screens.xs} auto;
             }
           }
-
-          /* Dark Mode */
           @media (prefers-color-scheme: dark) {
             body {
               background: ${colors.bgDark};
@@ -114,6 +84,12 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
             }
             .text b {
               color: #fff !important;
+            }
+            .border-top {
+              border-top: 1px solid #1e293b;
+            }
+            a {
+              color: ${colors.indigo400};
             }
             .dark-mode {
               display: inherit !important;
@@ -131,6 +107,9 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
             }
             .gradient-background {
               background-image: url("https://lwworks.vercel.app/images/background-dark.jpg");
+            }
+            .footer {
+              color: ${colors.slate500} !important;
             }
           }
       `}</MjmlStyle>

@@ -1,35 +1,62 @@
-import React from "react";
-import { MjmlButton } from "mjml-react";
+import {ComponentProps} from 'react'
+import {MjmlButton} from 'mjml-react'
 
-import { colors, fontSize, borderRadius, lineHeight, spacing } from "../theme";
+import {colors, borderRadius, fontWeight} from '../theme'
 
-type ButtonProps = React.ComponentProps<typeof MjmlButton>;
+type ButtonProps = {
+  style?: 'primary' | 'secondary'
+} & ComponentProps<typeof MjmlButton>
 
-export default function Button(props: ButtonProps) {
-  return (
-    <>
-      <MjmlButton
-        lineHeight={lineHeight.tight}
-        fontSize={fontSize.base}
-        height={spacing.s8}
-        align="left"
-        backgroundColor={colors.black}
-        color={colors.neutral100}
-        borderRadius={borderRadius.base}
-        cssClass="light-mode"
-        {...props}
-      />
-      <MjmlButton
-        lineHeight={lineHeight.tight}
-        fontSize={fontSize.base}
-        height={spacing.s8}
-        align="left"
-        backgroundColor={colors.gold}
-        color={colors.black}
-        borderRadius={borderRadius.base}
-        cssClass="dark-mode"
-        {...props}
-      />
-    </>
-  );
+export default function Button({style = 'primary', ...props}: ButtonProps) {
+  if (style === 'primary') {
+    return (
+      <>
+        <MjmlButton
+          align="left"
+          innerPadding="4px 16px"
+          borderRadius={borderRadius.full}
+          color={colors.white}
+          backgroundColor={colors.indigo500}
+          fontWeight={fontWeight.bold}
+          cssClass="light-mode"
+          {...props}
+        />
+        <MjmlButton
+          align="left"
+          innerPadding="4px 16px"
+          borderRadius={borderRadius.full}
+          color={colors.white}
+          backgroundColor={colors.indigo500}
+          fontWeight={fontWeight.bold}
+          cssClass="dark-mode"
+          {...props}
+        />
+      </>
+    )
+  } else {
+    return (
+      <>
+        <MjmlButton
+          align="left"
+          innerPadding="4px 16px"
+          borderRadius={borderRadius.full}
+          color={colors.indigo500}
+          backgroundColor="transparent"
+          fontWeight={fontWeight.bold}
+          cssClass="light-mode"
+          {...props}
+        />
+        <MjmlButton
+          align="left"
+          innerPadding="4px 16px"
+          borderRadius={borderRadius.full}
+          color={colors.indigo400}
+          backgroundColor="transparent"
+          fontWeight={fontWeight.bold}
+          cssClass="dark-mode"
+          {...props}
+        />
+      </>
+    )
+  }
 }

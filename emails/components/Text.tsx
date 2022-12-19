@@ -3,10 +3,14 @@ import {MjmlText} from 'mjml-react'
 
 type TextProps = React.ComponentProps<typeof MjmlText>
 
-export default function Text({children, ...props}: TextProps) {
+const defaultProps = {}
+
+export const Text = ({children, ...props}: TextProps) => {
   return (
-    <MjmlText {...props} color="#475569" cssClass="text">
+    <MjmlText {...defaultProps} {...props} cssClass="text">
       {children}
     </MjmlText>
   )
 }
+
+export default Text
