@@ -8,7 +8,7 @@ export const Login = () => {
   const login = async () => {
     const {data, error} = await supabase.auth.signInWithOtp({
       email: 'mail@lukaswiesehan.de',
-      options: {emailRedirectTo: 'http://localhost:3000'}
+      options: {emailRedirectTo: 'https://lwworks.vercel.app'}
     })
     if (error) console.log(error)
   }
