@@ -1,5 +1,7 @@
 'use client'
 
+import {Logout} from '@components/logout'
+
 export default function Email() {
   const sendTest = async () => {
     await fetch('/api/mail/send', {
@@ -10,8 +12,9 @@ export default function Email() {
   return (
     <main>
       <section>
-        <h1>Email</h1>
-        <button onClick={sendTest}>SEND</button>
+        <h1>Dashboard</h1>
+        <button onClick={sendTest}>SEND EMAIL</button>
+        <Logout />
       </section>
     </main>
   )

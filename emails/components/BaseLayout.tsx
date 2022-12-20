@@ -17,8 +17,8 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
           <meta name="color-scheme" content="light dark" />
           <meta name="supported-color-schemes" content="light dark" />
         </MjmlRaw>
-        <MjmlFont name="Sora" href="https://lwworks.vercel.app/fonts/sora.css" />
-        <MjmlFont name="Lato" href="https://lwworks.vercel.app/fonts/lato.css" />
+        <MjmlFont name="Sora" href={`${process.env.NEXT_PUBLIC_BASE_URL}/fonts/sora.css`} />
+        <MjmlFont name="Lato" href={`${process.env.NEXT_PUBLIC_BASE_URL}/fonts/lato.css`} />
         <MjmlAttributes>
           <MjmlAll {...themeDefaults} />
         </MjmlAttributes>
@@ -50,7 +50,7 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
             mso-hide: all;
           }
           .gradient-background {
-            background-image: url("https://lwworks.vercel.app/images/background-light.jpg");
+            background-image: url("${process.env.NEXT_PUBLIC_BASE_URL}/images/background-light.jpg");
             background-size: 100% auto;
             background-position: center top;
             background-repeat: no-repeat;
@@ -106,7 +106,7 @@ export default function BaseLayout({width, children, preview}: BaseLayoutProps) 
               mso-hide: all;
             }
             .gradient-background {
-              background-image: url("https://lwworks.vercel.app/images/background-dark.jpg");
+              background-image: url("${process.env.NEXT_PUBLIC_BASE_URL}/images/background-dark.jpg");
             }
             .footer {
               color: ${colors.slate500} !important;

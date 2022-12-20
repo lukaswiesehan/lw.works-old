@@ -1,10 +1,10 @@
-import {Logout} from '@components/logout'
+import {Login} from '@components/login'
 
 export default function Home() {
   return (
     <main>
-      <div>DAS IST DIE STARTSEITE</div>
-      <Logout />
+      <h1>Startseite/Login</h1>
+      <Login />
     </main>
   )
 }

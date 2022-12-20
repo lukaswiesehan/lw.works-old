@@ -23,7 +23,7 @@ const Signature: FC<SignatureProps> = ({greeting = 'Viele Grüße —'}) => {
               width="48px"
               height="48px"
               align="left"
-              src="https://lwworks.vercel.app/images/lukaswiesehan.png"
+              src={`${process.env.NEXT_PUBLIC_BASE_URL}/images/lukaswiesehan.png`}
               border="1px solid #A5B4FC"
               border-radius="24px"
             />

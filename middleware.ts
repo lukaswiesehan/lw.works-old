@@ -11,9 +11,17 @@ export const middleware = async (req: NextRequest) => {
     data: {session}
   } = await supabase.auth.getSession()
 
-  if (!session) {
-    const url = req.nextUrl.clone()
-    url.pathname = '/login'
+  const url = req.nextUrl.clone()
+
+  // If not logged in, redirect to /
+  if (!session && url.pathname !== '/') {
+    url.pathname = '/'
+    return NextResponse.redirect(url)
+  }
+
+  // If logged in, but on login page, redirect to /dashboard
+  if (session && url.pathname === '/') {
+    url.pathname = '/dashboard'
     return NextResponse.redirect(url)
   }
 
@@ -21,5 +29,5 @@ export const middleware = async (req: NextRequest) => {
 }
 
 export const config = {
-  matcher: ['/', '/email']
+  matcher: ['/', '/dashboard']
 }
