@@ -1,11 +1,15 @@
 {
   "headers": [
     {
-      "source": "/fonts/lato-v17-latin-regular.woff2",
+      "source": "/fonts/lato-400-latin.woff2",
       "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]
     },
     {
-      "source": "/fonts/lato-v17-latin-italic.woff2",
+      "source": "/fonts/lato-700-latin.woff2",
+      "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]
+    },
+    {
+      "source": "/fonts/sora-800-latin.woff2",
       "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]
     }
   ]
