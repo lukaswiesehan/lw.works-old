@@ -54,7 +54,7 @@ export const Layout = async ({children}: {children: React.ReactNode}) => {
           <Ellipse className="absolute left-32 top-12 w-5/12 animate-spin-slow text-[#A2B976] mix-blend-overlay blur-2xl md:-top-8 md:left-1/4 md:blur-4xl" />
           <Triangle className="absolute -top-12 right-12 w-5/12 animate-spin-slow text-[#B0F4D5] mix-blend-overlay blur-2xl md:-top-36 md:opacity-80 md:blur-4xl" />
         </div>
-        <Noise />
+        {/* <Noise /> */}
         <Navigation />
         <div className="relative">{children}</div>
       </body>
