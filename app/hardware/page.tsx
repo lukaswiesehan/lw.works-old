@@ -10,7 +10,6 @@ import Link from 'next/link'
 
 export default async function Hardware() {
   const {products} = await getProducts()
-  console.log(products)
 
   return (
     <main>
@@ -20,11 +19,10 @@ export default async function Hardware() {
           Mit diesen kleinen Masterpieces bringe ich Design in meinen Alltag. <b>Bedien&apos; Dich, wenn Du magst</b>.
         </Paragraph>
       </Section>
-      <Section className="grid grid-cols-3 gap-16 py-24">
-        <div></div>
+      <Section className="grid grid-cols-1 gap-12 py-24 sm:grid-cols-2 lg:grid-cols-3 xl:gap-16">
         {products.map((product, index) => (
           <Link href={`/hardware/${product.displaySKU}`} key={index} className="flex space-x-4">
-            <div className="relative w-4 shrink-0 pt-4">
+            <div className="relative w-4 shrink-0 py-4">
               <Logo className="w-full text-white/30" />
               <div style={{writingMode: 'vertical-rl'}} className="flex space-y-4 pt-5 font-mono uppercase leading-none text-white">
                 <div>{product.displaySKU}</div>
@@ -34,13 +32,13 @@ export default async function Hardware() {
                 <div>{product.displayVariant}</div>
               </div>
             </div>
-            <Card className="p-10" glowColor={product.accentColor}>
+            <Card className="p-12" glowColor={product.accentColor}>
               <Image
                 src={product.featuredImage.url}
                 alt={product.featuredImage.altText}
                 width={800}
                 height={(800 * product.featuredImage.height) / product.featuredImage.width}
-                className="w-full transition-transform duration-500 group-hover:scale-105"
+                className="w-full drop-shadow-md transition-transform duration-500 group-hover:scale-105"
                 placeholder="blur"
                 blurDataURL={product.featuredImage.url}
               />

@@ -9,7 +9,7 @@ const links = [
 
 export const Navigation = () => {
   return (
-    <nav className="relative mx-auto flex w-full max-w-screen-xl justify-between p-4 sm:p-8 lg:py-10 lg:px-16">
+    <nav className="relative mx-auto flex w-full max-w-screen-xl justify-between p-4 sm:p-8 lg:py-10 lg:px-12">
       <Link href="/">
         <Logo className="h-6 text-white md:h-8" />
       </Link>
