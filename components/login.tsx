@@ -8,7 +8,7 @@ export const Login = () => {
   const login = async () => {
     const {data, error} = await supabase.auth.signInWithOtp({
       email: 'mail@lukaswiesehan.de',
-      options: {emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard`}
+      options: {emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/operations/dashboard`}
     })
     console.log(data)
     if (error) console.log(error)

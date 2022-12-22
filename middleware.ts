@@ -5,6 +5,8 @@ import {type NextRequest} from 'next/server'
 export const middleware = async (req: NextRequest) => {
   const res = NextResponse.next()
 
+  console.log('Middleware runs...')
+
   const supabase = createMiddlewareSupabaseClient({req, res})
 
   const {
@@ -14,14 +16,14 @@ export const middleware = async (req: NextRequest) => {
   const url = req.nextUrl.clone()
 
   // If not logged in, redirect to /
-  if (!session && url.pathname !== '/') {
-    url.pathname = '/'
+  if (!session && url.pathname !== '/operations') {
+    url.pathname = '/operations'
     return NextResponse.redirect(url)
   }
 
   // If logged in, but on login page, redirect to /dashboard
-  if (session && url.pathname === '/') {
-    url.pathname = '/dashboard'
+  if (session && url.pathname === '/operations') {
+    url.pathname = '/operations/dashboard'
     return NextResponse.redirect(url)
   }
 
@@ -29,5 +31,5 @@ export const middleware = async (req: NextRequest) => {
 }
 
 export const config = {
-  matcher: ['/', '/dashboard']
+  matcher: ['/operations/:path*']
 }

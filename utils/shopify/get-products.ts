@@ -1,0 +1,42 @@
+export const getProducts = async () => {
+  const res = await fetch('https://lukaswiesehan.myshopify.com/api/2022-10/graphql.json', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!
+    },
+    body: JSON.stringify({
+      query: `{
+        products(first:10) {
+          edges {
+            node {
+              title
+              handle
+              displayName: metafield(namespace: "custom", key: "display_name") {
+                value
+              }
+              displayVariant: metafield(namespace: "custom", key: "display_variant") {
+                value
+              }
+              displaySKU: metafield(namespace: "custom", key: "display_sku") {
+                value
+              }
+              featuredImage {
+                url
+                width
+                height
+                altText
+              }
+            }
+          }
+        }
+      }`
+    })
+  })
+  const {
+    data: {
+      products: {edges}
+    }
+  } = await res.json()
+  return {products: edges}
+}

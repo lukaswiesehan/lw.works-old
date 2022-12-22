@@ -16,7 +16,6 @@ export const SendEmail = () => {
         to: 'lukas.wiesehan@icloud.com'
       } as SendEmailReqBody)
     })
-    const smtpResponse = await supabase.from('smtp').select()
   }
 
   return (

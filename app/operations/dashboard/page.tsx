@@ -1,11 +1,11 @@
 import {Logout} from '@components/logout'
 import {SendEmail} from '@components/send-email'
 
-export default function Email() {
+export default function Dashboard() {
   return (
-    <main>
+    <main className="p-4 border border-red-400">
       <section>
-        <h1>Dashboard</h1>
+        <h1>Operations/Dashboard</h1>
         <SendEmail />
         <Logout />
       </section>
