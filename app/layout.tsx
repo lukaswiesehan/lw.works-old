@@ -1,7 +1,6 @@
 import {Navigation} from '@components/layout/navigation'
 import {Noise} from '@components/visual/noise'
 import {BlobLarge} from '@components/visual/svg-blobs/blob-large'
-import {Cirlce} from '@components/visual/svg-blobs/circle'
 import {Ellipse} from '@components/visual/svg-blobs/ellipse'
 import {Triangle} from '@components/visual/svg-blobs/triangle'
 import 'server-only'
