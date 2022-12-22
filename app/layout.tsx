@@ -32,10 +32,20 @@ const sora = localFont({
     }
   ]
 })
+const mono = localFont({
+  variable: '--font-jetbrains-mono',
+  src: [
+    {
+      path: '../public/fonts/jetbrains-mono-300-latin.woff2',
+      weight: '300',
+      style: 'normal'
+    }
+  ]
+})
 
 export const Layout = async ({children}: {children: React.ReactNode}) => {
   return (
-    <html lang="de" className={`${lato.variable} ${sora.variable}`}>
+    <html lang="de" className={`${lato.variable} ${sora.variable} ${mono.variable}`}>
       <head />
       <body className="relative min-h-screen w-screen overflow-x-hidden bg-[#0E1117]">
         <div className="relative mx-auto w-full max-w-screen-2xl">

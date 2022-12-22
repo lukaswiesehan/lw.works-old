@@ -1,4 +1,4 @@
-import {Heading} from '@components/heading'
+import {Heading} from '@components/atoms/heading'
 import {Section} from '@components/layout/section'
 
 export default function Home() {

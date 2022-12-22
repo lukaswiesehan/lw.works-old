@@ -1,4 +1,4 @@
-export const getProducts = async () => {
+export const getProducts = async (): Promise<{products: ProductPreview[]}> => {
   const res = await fetch('https://lukaswiesehan.myshopify.com/api/2022-10/graphql.json', {
     method: 'POST',
     headers: {
@@ -21,6 +21,9 @@ export const getProducts = async () => {
               displaySKU: metafield(namespace: "custom", key: "display_sku") {
                 value
               }
+              accentColor: metafield(namespace: "custom", key: "accent_color") {
+                value
+              }
               featuredImage {
                 url
                 width
@@ -38,5 +41,13 @@ export const getProducts = async () => {
       products: {edges}
     }
   } = await res.json()
-  return {products: edges}
+  return {
+    products: edges.map((e: {node: any}) => ({
+      ...e.node,
+      displayName: e.node.displayName.value,
+      displayVariant: e.node.displayVariant.value,
+      displaySKU: e.node.displaySKU.value,
+      accentColor: e.node.accentColor.value
+    }))
+  }
 }
