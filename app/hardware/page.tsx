@@ -38,7 +38,7 @@ export default async function Hardware() {
                 alt={product.featuredImage.altText}
                 width={800}
                 height={(800 * product.featuredImage.height) / product.featuredImage.width}
-                className="w-full drop-shadow-md transition-transform duration-500 group-hover:scale-105"
+                className="w-full transition-transform duration-500 group-hover:scale-105"
                 placeholder="blur"
                 blurDataURL={product.featuredImage.url}
               />
