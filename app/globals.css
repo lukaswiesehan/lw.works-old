@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('/fonts/lato.css');
-@import url('/fonts/sora.css');
-
 @layer base {
   * {
     @apply antialiased;

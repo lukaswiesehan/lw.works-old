@@ -5,10 +5,37 @@ import {Ellipse} from '@components/visual/svg-blobs/ellipse'
 import {Triangle} from '@components/visual/svg-blobs/triangle'
 import 'server-only'
 import './globals.css'
+import localFont from '@next/font/local'
+
+const lato = localFont({
+  variable: '--font-lato',
+  src: [
+    {
+      path: '../public/fonts/lato-400-latin.woff2',
+      weight: '400',
+      style: 'normal'
+    },
+    {
+      path: '../public/fonts/lato-700-latin.woff2',
+      weight: '700',
+      style: 'normal'
+    }
+  ]
+})
+const sora = localFont({
+  variable: '--font-sora',
+  src: [
+    {
+      path: '../public/fonts/sora-800-latin.woff2',
+      weight: '800',
+      style: 'normal'
+    }
+  ]
+})
 
 export const Layout = async ({children}: {children: React.ReactNode}) => {
   return (
-    <html lang="de">
+    <html lang="de" className={`${lato.variable} ${sora.variable}`}>
       <head />
       <body className="relative min-h-screen w-screen overflow-x-hidden bg-[#0E1117]">
         <div className="relative mx-auto w-full max-w-screen-2xl">

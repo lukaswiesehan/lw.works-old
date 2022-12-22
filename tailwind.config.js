@@ -3,8 +3,8 @@ module.exports = {
   content: ['./app/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
-      sans: ['Lato', 'sans-serif'],
-      display: ['Sora', 'sans-serif']
+      sans: ['var(--font-lato)', 'Lato', 'sans-serif'],
+      display: ['var(--font-sora)', 'Sora', 'sans-serif']
     },
     extend: {
       animation: {
