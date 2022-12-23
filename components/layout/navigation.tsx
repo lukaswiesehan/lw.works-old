@@ -33,7 +33,7 @@ export const Navigation = () => {
   return (
     <nav className="sticky top-0 z-50 w-full pt-4 md:pt-6 lg:pt-10">
       <div className="w-full px-4 sm:px-6 md:hidden">
-        <div className="relative z-50 flex h-12 items-center justify-between rounded-3xl border border-slate-700 bg-[#191F29] pl-5 pr-1.5 shadow-lg">
+        <div className="relative z-50 flex h-12 items-center justify-between rounded-3xl border border-slate-700 bg-black/70 pl-5 pr-1.5 shadow-lg backdrop-blur-lg">
           <Link href="/">
             <Logo className="h-5 text-white md:h-8" />
           </Link>
@@ -47,7 +47,7 @@ export const Navigation = () => {
         {open && (
           <>
             <div className="fixed inset-0 bg-black/20 backdrop-blur-lg" onClick={() => setOpen((open) => !open)} />
-            <div className="fixed inset-x-4 mt-2 flex h-48 flex-col items-center justify-between rounded-3xl border border-slate-700 bg-[#191F29] p-4 pb-6 shadow-lg sm:inset-x-6">
+            <div className="fixed inset-x-4 mt-2 flex h-48 flex-col items-center justify-between rounded-3xl border border-slate-700 bg-black/70 p-4 pb-6 shadow-lg sm:inset-x-6">
               <ul className="relative flex items-center justify-center space-x-4">
                 {links.map(({href, caption}, index) => {
                   const active = pathname?.split('/')[1] === href.split('/')[1]
@@ -86,7 +86,7 @@ export const Navigation = () => {
         <motion.div
           onMouseMove={onMouseMove}
           ref={container}
-          className="group relative flex h-12 items-center rounded-3xl border border-slate-700 bg-[#191F29] pr-1.5 shadow-lg"
+          className="group relative flex h-12 items-center rounded-3xl border border-slate-700 bg-black/70 pr-1.5 shadow-lg backdrop-blur-lg"
         >
           <div className="absolute inset-0 overflow-hidden rounded-full">
             <motion.div
@@ -116,7 +116,7 @@ export const Navigation = () => {
               )
             })}
           </ul>
-          <div className="relative ml-4 mr-6 flex h-5 items-center border-x border-slate-700 px-3">
+          <div className="relative ml-4 mr-6 flex h-5 items-center border-x border-slate-600 px-3">
             <LanguageButton />
             <ThemeButton />
           </div>
