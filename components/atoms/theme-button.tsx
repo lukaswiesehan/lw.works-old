@@ -12,11 +12,18 @@ const themes = [
 ]
 
 export const ThemeButton = () => {
-  const [theme, setTheme] = useState<string>(localStorage.theme ?? 'system')
-  const Icon =
-    theme === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? MoonIcon : SunIcon) : themes.find((t) => t.id === theme)!.icon
+  const [theme, setTheme] = useState<string>()
 
   useEffect(() => {
+    const handleEvent = () => setTheme(localStorage?.theme || 'system')
+    handleEvent()
+    window.addEventListener('storage', handleEvent)
+    return () => window.removeEventListener('storage', handleEvent)
+  }, [])
+
+  useEffect(() => {
+    console.log(theme)
+    if (!theme) return
     localStorage.theme = theme
     if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches))
       document.documentElement.classList.add('dark')
@@ -27,7 +34,8 @@ export const ThemeButton = () => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className="flex h-7 items-center rounded px-2 text-indigo-300 hover:text-indigo-200 focus:bg-white/10 focus:outline-none">
         <span className="">
-          <Icon className="h-4" />
+          <MoonIcon className="theme-icon-dark h-4" />
+          <SunIcon className="theme-icon-light h-4" />
         </span>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>

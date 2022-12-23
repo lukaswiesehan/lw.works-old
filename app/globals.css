@@ -10,4 +10,18 @@
   p > b {
     @apply text-white;
   }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html.dark .theme-icon-dark,
+  .theme-icon-light {
+    @apply block;
+  }
+
+  html.dark .theme-icon-light,
+  .theme-icon-dark {
+    @apply hidden;
+  }
 }
