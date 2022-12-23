@@ -8,7 +8,7 @@ export const Card: FC<{glowColor?: string; className?: string; children: ReactNo
       >
         <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-slate-400 opacity-10" />
         <div
-          className="absolute left-1/4 right-1/4 -bottom-12 aspect-square rounded-full opacity-40 blur-3xl transition-all duration-500 group-hover:scale-125 group-hover:opacity-60"
+          className="absolute left-1/4 right-1/4 -bottom-12 aspect-square rounded-full opacity-40 blur-3xl lg:transition-all lg:duration-500 lg:group-hover:scale-125 lg:group-hover:opacity-60"
           style={{backgroundColor: glowColor}}
         />
         <div className="relative">{children}</div>
