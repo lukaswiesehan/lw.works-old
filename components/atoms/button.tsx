@@ -25,8 +25,10 @@ export const Button: FC<{
     hover: disabled ? {} : {x: 0, transition: {duration: transitionDuration}}
   }
 
-  const primaryStyle = 'relative h-9 flex-shrink-0 rounded-full bg-gradient-to-b from-indigo-400 to-indigo-500 p-px shadow shadow-indigo-500/25'
-  const secondaryStyle = 'relative h-9 flex-shrink-0 rounded-full bg-gradient-to-b from-slate-600 to-slate-700/70 p-px shadow'
+  const primaryStyle =
+    'relative h-9 flex-shrink-0 rounded-full bg-gradient-to-b from-indigo-400 to-indigo-500 p-px shadow shadow-indigo-500/25 focus:outline-none focus:ring-1 focus:ring-white/30'
+  const secondaryStyle =
+    'relative h-9 flex-shrink-0 rounded-full bg-gradient-to-b from-slate-600 to-slate-700/70 p-px shadow focus:outline-none focus:ring-1 focus:ring-white/30'
 
   return (
     <motion.button
@@ -41,7 +43,7 @@ export const Button: FC<{
       <div
         className={`flex h-full items-center space-x-2 rounded-full ${
           secondary ? 'bg-slate-800 text-slate-50' : 'bg-indigo-500 text-indigo-50'
-        } font-bold  ${hideArrow ? 'px-4' : 'pl-4 pr-2.5'}`}
+        } font-bold  ${hideArrow ? 'px-4' : 'pl-4 pr-2.5'} focus:ring-`}
       >
         <span className="drop-shadow">{children}</span>
         {!hideArrow && (

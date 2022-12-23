@@ -1,11 +1,11 @@
 import {Navigation} from '@components/layout/navigation'
-import {Noise} from '@components/visual/noise'
 import {BlobLarge} from '@components/visual/svg-blobs/blob-large'
 import {Ellipse} from '@components/visual/svg-blobs/ellipse'
 import {Triangle} from '@components/visual/svg-blobs/triangle'
 import 'server-only'
 import './globals.css'
 import localFont from '@next/font/local'
+import Script from 'next/script'
 
 const lato = localFont({
   variable: '--font-lato',
@@ -47,14 +47,28 @@ export const Layout = async ({children}: {children: React.ReactNode}) => {
   return (
     <html lang="de" className={`${lato.variable} ${sora.variable} ${mono.variable}`}>
       <head />
-      <body className="relative min-h-screen w-full overflow-x-hidden bg-[#0E1117]">
+      <body className="relative min-h-screen w-full overflow-x-hidden bg-white dark:bg-[#0E1117]">
+        {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
+        <Script
+          id="check-theme"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (!('theme' in localStorage)) localStorage.theme = 'system'
+              if (localStorage.theme === 'dark' || (localStorage.theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark')
+              } else {
+                document.documentElement.classList.remove('dark')
+              }
+            `
+          }}
+        />
         <div className="absolute inset-0 overflow-x-hidden 2xl:inset-x-64 2xl:overflow-x-visible">
           <BlobLarge className="absolute -right-8 -top-8 w-1/2 animate-spin-slow text-[#8182C8] blur-3xl md:-right-48 md:-top-40 md:blur-4xl" />
           <Ellipse className="absolute left-32 -top-4 w-7/12 rotate-6 text-[#AA8FC5] blur-3xl md:-top-32 md:left-auto md:right-16 md:blur-4xl" />
           <Ellipse className="absolute left-32 top-12 w-5/12 animate-spin-slow text-[#A2B976] mix-blend-overlay blur-2xl md:-top-8 md:left-1/4 md:blur-4xl" />
           <Triangle className="absolute -top-12 right-12 w-5/12 animate-spin-slow text-[#B0F4D5] mix-blend-overlay blur-2xl md:-top-36 md:opacity-80 md:blur-4xl" />
         </div>
-        {/* <Noise /> */}
         <Navigation />
         <div className="relative">{children}</div>
       </body>
@@ -63,3 +77,9 @@ export const Layout = async ({children}: {children: React.ReactNode}) => {
 }
 
 export default Layout
+
+// if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+//   {document.documentElement.classList.add('dark')
+// } else {
+//   document.documentElement.classList.remove('dark')
+// }

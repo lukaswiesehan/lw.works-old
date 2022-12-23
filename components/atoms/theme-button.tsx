@@ -1,16 +1,27 @@
+'use client'
+import {GearIcon} from '@components/icons/gear'
 import {MoonIcon} from '@components/icons/moon'
 import {SunIcon} from '@components/icons/sun'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 const themes = [
   {id: 'light', name: 'Light Mode', icon: SunIcon},
-  {id: 'dark', name: 'Dark Mode', icon: MoonIcon}
+  {id: 'dark', name: 'Dark Mode', icon: MoonIcon},
+  {id: 'system', name: 'System Preference', icon: GearIcon}
 ]
 
 export const ThemeButton = () => {
-  const [theme, setTheme] = useState<string>(themes[1].id)
-  const Icon = themes.find((t) => t.id === theme)!.icon
+  const [theme, setTheme] = useState<string>(localStorage.theme ?? 'system')
+  const Icon =
+    theme === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? MoonIcon : SunIcon) : themes.find((t) => t.id === theme)!.icon
+
+  useEffect(() => {
+    localStorage.theme = theme
+    if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches))
+      document.documentElement.classList.add('dark')
+    else document.documentElement.classList.remove('dark')
+  }, [theme])
 
   return (
     <DropdownMenu.Root>

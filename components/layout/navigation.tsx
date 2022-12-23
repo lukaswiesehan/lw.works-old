@@ -108,7 +108,7 @@ export const Navigation = () => {
                     {caption}
                   </Link>
                   {active && (
-                    <div className="absolute -inset-x-2 mt-[9px] h-px overflow-y-hidden">
+                    <div className="absolute inset-x-0 mt-[9px] h-px overflow-y-hidden">
                       <div className="mx-auto -mt-6 h-12 w-2/3 bg-white opacity-80 blur" />
                     </div>
                   )}
