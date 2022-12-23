@@ -47,7 +47,7 @@ export const Layout = async ({children}: {children: React.ReactNode}) => {
   return (
     <html lang="de" className={`${lato.variable} ${sora.variable} ${mono.variable}`}>
       <head />
-      <body className="min-h-screen w-full overflow-x-hidden border border-red-500 bg-[#0E1117]">
+      <body className="min-h-screen w-full overflow-x-hidden bg-[#0E1117]">
         <div className="relative mx-auto w-full max-w-screen-2xl">
           <BlobLarge className="absolute -right-8 -top-8 w-1/2 animate-spin-slow text-[#8182C8] blur-3xl md:-right-48 md:-top-40 md:blur-4xl" />
           <Ellipse className="absolute left-32 -top-4 w-7/12 rotate-6 text-[#AA8FC5] blur-3xl md:-top-32 md:left-auto md:right-16 md:blur-4xl" />
