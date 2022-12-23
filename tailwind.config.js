@@ -40,6 +40,7 @@ module.exports = {
         'spin-slow': 'spin 20s linear infinite'
       },
       blur: {
+        '3xl': '64px',
         '4xl': '96px'
       },
       backgroundImage: {
