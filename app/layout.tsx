@@ -41,7 +41,7 @@ const mono = localFont({
   ]
 })
 
-export const Layout = async ({children}: {children: React.ReactNode}) => {
+export default async function Layout({children}: {children: React.ReactNode}) {
   return (
     <html lang="de" className={`${lato.variable} ${sora.variable} ${mono.variable}`}>
       <head />
@@ -68,11 +68,3 @@ export const Layout = async ({children}: {children: React.ReactNode}) => {
     </html>
   )
 }
-
-export default Layout
-
-// if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
-//   {document.documentElement.classList.add('dark')
-// } else {
-//   document.documentElement.classList.remove('dark')
-// }
