@@ -4,9 +4,9 @@ export const Card: FC<{glowColor?: string; className?: string; children: ReactNo
   return (
     <div className="group w-full">
       <div
-        className={`relative flex min-h-full w-full flex-col justify-center overflow-hidden rounded-[2rem] border border-slate-600 bg-slate-200/5 backdrop-blur-xl ${className}`}
+        className={`relative flex min-h-full w-full flex-col justify-center overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-200/20 backdrop-blur-xl dark:border-slate-600 dark:bg-slate-200/5 ${className}`}
       >
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-slate-400 opacity-10" />
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-slate-300 opacity-10 dark:to-slate-400" />
         <div
           className="absolute left-1/4 right-1/4 -bottom-12 aspect-square scale-110 rounded-full opacity-25 blur-2xl lg:scale-100 lg:opacity-40 lg:blur-3xl lg:transition-all lg:duration-500 lg:group-hover:scale-125 lg:group-hover:opacity-60"
           style={{backgroundColor: glowColor}}

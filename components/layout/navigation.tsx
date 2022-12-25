@@ -31,11 +31,11 @@ export const Navigation = () => {
   }, [pathname])
 
   return (
-    <nav className="sticky top-0 z-50 w-full pt-4 md:pt-6 lg:pt-10">
-      <div className="w-full px-4 sm:px-6 md:hidden">
-        <div className="relative z-50 flex h-12 items-center justify-between rounded-3xl border border-slate-700 bg-black/70 pl-5 pr-1.5 shadow-lg backdrop-blur-lg">
+    <nav className="relative z-50 w-full pt-4 md:pt-6 lg:pt-10">
+      <div className="fixed top-4 w-full px-4 sm:px-6 md:hidden">
+        <div className="relative z-50 flex h-12 items-center justify-between rounded-3xl border border-slate-200 bg-slate-200/50 pl-5 pr-1.5 shadow-lg shadow-black/5 backdrop-blur-lg dark:border-slate-700 dark:bg-black/70 dark:shadow-black/10">
           <Link href="/">
-            <Logo className="h-5 text-white md:h-8" />
+            <Logo className="h-5 text-black dark:text-white md:h-8" />
           </Link>
           <div className="absolute -bottom-px h-px w-8 overflow-y-hidden">
             <div className="mx-auto -mt-6 h-12 w-1/3 bg-white opacity-80 blur" />
@@ -46,8 +46,8 @@ export const Navigation = () => {
         </div>
         {open && (
           <>
-            <div className="fixed inset-0 bg-black/20 backdrop-blur-lg" onClick={() => setOpen((open) => !open)} />
-            <div className="fixed inset-x-4 mt-2 flex h-48 flex-col items-center justify-between rounded-3xl border border-slate-700 bg-black/70 p-4 pb-6 shadow-lg sm:inset-x-6">
+            <div className="fixed inset-0 bg-white/40 backdrop-blur-lg dark:bg-black/20" onClick={() => setOpen((open) => !open)} />
+            <div className="fixed inset-x-4 mt-2 flex h-48 flex-col items-center justify-between rounded-3xl border border-slate-200 bg-slate-200/50 p-4 pb-6 shadow-lg shadow-black/5 dark:border-slate-700 dark:bg-black/70 dark:shadow-black/10 sm:inset-x-6">
               <ul className="relative flex items-center justify-center space-x-4">
                 {links.map(({href, caption}, index) => {
                   const active = pathname?.split('/')[1] === href.split('/')[1]
@@ -56,7 +56,7 @@ export const Navigation = () => {
                       <Link
                         href={href}
                         className={`relative flex h-7 items-center rounded px-2 font-bold focus:bg-white/10 focus:outline-none ${
-                          active ? 'text-white' : 'text-slate-300 hover:text-white'
+                          active ? 'text-black dark:text-white' : 'text-slate-600 hover:text-black dark:text-slate-300 dark:hover:text-white'
                         }`}
                       >
                         {caption}
@@ -79,18 +79,20 @@ export const Navigation = () => {
           </>
         )}
       </div>
-      <div className="mx-auto hidden w-full max-w-screen-xl items-center justify-between px-8 md:flex lg:px-12">
-        <Link href="/">
-          <Logo className="h-8 text-white md:h-8" />
-        </Link>
+      <div className="relative mx-auto hidden w-full max-w-screen-xl items-center justify-end px-8 md:flex lg:px-12">
+        <div className="absolute top-0 left-8 flex h-12 items-center lg:left-12">
+          <Link href="/">
+            <Logo className="h-8 text-black dark:text-white md:h-8" />
+          </Link>
+        </div>
         <motion.div
           onMouseMove={onMouseMove}
           ref={container}
-          className="group relative flex h-12 items-center rounded-3xl border border-slate-700 bg-black/70 pr-1.5 shadow-lg backdrop-blur-lg"
+          className="group fixed top-6 flex h-12 items-center rounded-3xl border border-slate-200 bg-slate-200/50 pr-1.5 shadow-lg shadow-black/5 backdrop-blur-lg dark:border-slate-700 dark:bg-black/70 dark:shadow-black/10 lg:top-10"
         >
           <div className="absolute inset-0 overflow-hidden rounded-full">
             <motion.div
-              className="absolute -bottom-3 -left-10 h-6 w-20 rounded-full bg-white/30 opacity-0 blur-lg transition-opacity duration-200 group-hover:opacity-100"
+              className="absolute -bottom-3 -left-10 h-6 w-20 rounded-full bg-white/70 opacity-0 blur-lg transition-opacity duration-200 group-hover:opacity-100 dark:bg-white/30"
               style={{translateX: offsetX}}
             />
           </div>
@@ -101,8 +103,8 @@ export const Navigation = () => {
                 <li key={index} className="relative">
                   <Link
                     href={href}
-                    className={`relative flex h-7 items-center rounded px-2 font-bold focus:bg-white/10 focus:outline-none ${
-                      active ? 'text-white' : 'text-slate-300 hover:text-white'
+                    className={`relative flex h-7 items-center rounded px-2 font-bold focus:bg-white/30 focus:outline-none dark:focus:bg-white/10 ${
+                      active ? 'text-black dark:text-white' : 'text-slate-600 hover:text-black dark:text-slate-300 dark:hover:text-white'
                     }`}
                   >
                     {caption}
@@ -116,7 +118,7 @@ export const Navigation = () => {
               )
             })}
           </ul>
-          <div className="relative ml-4 mr-6 flex h-5 items-center border-x border-slate-600 px-3">
+          <div className="relative ml-4 mr-6 flex h-5 items-center border-x border-slate-100/70 px-3 dark:border-slate-600">
             <LanguageButton />
             <ThemeButton />
           </div>

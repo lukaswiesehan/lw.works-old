@@ -13,7 +13,7 @@ export default async function Hardware() {
 
   return (
     <main>
-      <Section className="pt-12 sm:pt-20 md:pt-32">
+      <Section className="pt-32 md:pt-40 lg:pt-48">
         <Heading level={1}>Hardware</Heading>
         <Paragraph size="lg" className="mt-12 max-w-md">
           Mit diesen kleinen Masterpieces bringe ich Design in meinen Alltag. <b>Bedien&apos; Dich, wenn Du magst</b>.
@@ -23,12 +23,12 @@ export default async function Hardware() {
         {products.map((product, index) => (
           <Link href={`/hardware/${product.handle}`} key={index} className="flex space-x-4">
             <div className="relative w-4 shrink-0 py-4">
-              <Logo className="w-full text-white/30" />
-              <div style={{writingMode: 'vertical-rl'}} className="flex space-y-4 pt-5 font-mono uppercase leading-none text-white">
+              <Logo className="w-full text-black/20 dark:text-white/30" />
+              <div style={{writingMode: 'vertical-rl'}} className="flex space-y-4 pt-5 font-mono uppercase leading-none text-black dark:text-white">
                 <div>{product.displaySKU}</div>
-                <div className="opacity-30">{'///'}</div>
+                <div className="opacity-20">{'///'}</div>
                 <h2>{product.displayName}</h2>
-                <div className="opacity-30">{'///'}</div>
+                <div className="opacity-20">{'///'}</div>
                 <div>{product.displayVariant}</div>
               </div>
             </div>
@@ -46,6 +46,7 @@ export default async function Hardware() {
           </Link>
         ))}
       </Section>
+      <Section className="py-96"></Section>
     </main>
   )
 }

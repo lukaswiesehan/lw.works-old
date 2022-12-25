@@ -4,11 +4,11 @@
 
 @layer base {
   body {
-    @apply text-slate-300 antialiased;
+    @apply text-slate-500 antialiased dark:text-slate-300;
   }
 
   p > b {
-    @apply text-white;
+    @apply text-black dark:text-white;
   }
 
   html.dark {
