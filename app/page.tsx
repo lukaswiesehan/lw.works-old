@@ -1,4 +1,6 @@
+import {Button} from '@components/atoms/button'
 import {Heading} from '@components/atoms/heading'
+import {Paragraph} from '@components/atoms/paragraph'
 import {Section} from '@components/layout/section'
 
 export default function Home() {
@@ -12,21 +14,14 @@ export default function Home() {
           <br className="hidden md:block" />
           ohne gleich ein Team einzustellen
         </Heading>
-      </Section>
-      <Section className="pt-12">
-        <Heading level={2} className="max-w-4xl">
-          Das ist die Überschrift 2
-        </Heading>
-      </Section>
-      <Section className="pt-12">
-        <Heading level={3} className="max-w-4xl">
-          Das ist die Überschrift 3
-        </Heading>
-      </Section>
-      <Section className="pt-12">
-        <Heading level={4} className="max-w-4xl">
-          Das ist die Überschrift 4
-        </Heading>
+        <Paragraph className="my-12 max-w-xl">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+          voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        </Paragraph>
+        <div className="flex space-x-2">
+          <Button>Primary Button</Button>
+          <Button secondary>Secondary Button</Button>
+        </div>
       </Section>
     </main>
   )

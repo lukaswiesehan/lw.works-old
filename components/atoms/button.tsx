@@ -28,7 +28,7 @@ export const Button: FC<{
   const primaryStyle =
     'relative h-9 flex-shrink-0 rounded-full bg-gradient-to-b from-indigo-400 to-indigo-500 p-px shadow shadow-indigo-500/25 focus:outline-none focus:ring-1 focus:ring-white/30'
   const secondaryStyle =
-    'relative h-9 flex-shrink-0 rounded-full bg-gradient-to-b from-slate-100 to-slate-200 dark:from-[#30333B] dark:to-[#17191F] p-px shadow focus:outline-none focus:ring-1 focus:ring-white/20'
+    'relative h-9 flex-shrink-0 rounded-full bg-gradient-to-b from-slate-100 to-slate-200 dark:from-[#393C45] dark:to-[#1A1D24] p-px shadow shadow-black/5 focus:outline-none focus:ring-1 focus:ring-white/20'
 
   return (
     <motion.button
@@ -42,12 +42,20 @@ export const Button: FC<{
     >
       <div
         className={`flex h-full items-center space-x-2 rounded-full ${
-          secondary ? 'bg-slate-200 text-slate-800 dark:bg-[#111319] dark:text-slate-50' : 'bg-indigo-500 text-indigo-50'
+          secondary
+            ? 'bg-[#F9FAFB] text-slate-800 hover:bg-white dark:bg-[#171C23] dark:text-slate-50 dark:hover:bg-[#1E242B]'
+            : 'bg-indigo-500 text-indigo-50 hover:bg-[#7375EE]'
         } font-bold  ${hideArrow ? 'px-4' : 'pl-4 pr-2.5'}`}
       >
         <span className="dark:drop-shadow">{children}</span>
         {!hideArrow && (
-          <svg height="10" viewBox="0 0 20 10" className="fill-current text-indigo-200 drop-shadow" fill="current" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            height="10"
+            viewBox="0 0 20 10"
+            className={`fill-current opacity-50 dark:drop-shadow ${secondary ? 'text-slate-600 dark:text-white' : 'text-white'}`}
+            fill="current"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <motion.path
               fillRule="evenodd"
               clipRule="evenodd"

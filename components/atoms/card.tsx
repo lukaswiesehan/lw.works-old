@@ -4,7 +4,7 @@ export const Card: FC<{glowColor?: string; className?: string; children: ReactNo
   return (
     <div className="group w-full">
       <div
-        className={`relative flex min-h-full w-full flex-col justify-center overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-200/20 backdrop-blur-xl dark:border-slate-600 dark:bg-slate-200/5 ${className}`}
+        className={`relative flex min-h-full w-full flex-col justify-center overflow-hidden rounded-[2rem] border border-black/10 bg-slate-200/20 backdrop-blur-xl dark:border-white/20 dark:bg-slate-200/5 ${className}`}
       >
         <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-slate-300 opacity-10 dark:to-slate-400" />
         <div
