@@ -32,10 +32,10 @@ export const ThemeButton = () => {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger className="flex h-7 items-center rounded px-2 text-indigo-300 hover:text-indigo-200 focus:bg-white/10 focus:outline-none">
+      <DropdownMenu.Trigger className="flex h-9 items-center rounded px-3 text-indigo-300 hover:text-indigo-200 focus:bg-white/10 focus:outline-none md:h-7 md:px-2">
         <span className="">
-          <MoonIcon className="theme-icon-dark h-4" />
-          <SunIcon className="theme-icon-light h-4" />
+          <MoonIcon className="theme-icon-dark h-5 md:h-4" />
+          <SunIcon className="theme-icon-light h-5 md:h-4" />
         </span>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
@@ -50,10 +50,10 @@ export const ThemeButton = () => {
                 <DropdownMenu.RadioItem
                   key={index}
                   value={id}
-                  className="relative flex h-7 cursor-pointer items-center rounded border border-transparent px-2 font-mono text-sm uppercase focus:bg-white/10 focus:outline-none data-[state=checked]:text-indigo-300"
+                  className="relative flex h-9 cursor-pointer items-center rounded border border-transparent px-3 focus:bg-white/10 focus:outline-none data-[state=checked]:text-indigo-300 md:h-7 md:px-2"
                 >
                   <DropdownMenu.ItemIndicator className="absolute inset-2 bg-indigo-400/80 blur-md" />
-                  <Icon className="relative h-4" />
+                  <Icon className="relative h-5 md:h-4" />
                 </DropdownMenu.RadioItem>
               )
             })}

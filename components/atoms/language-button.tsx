@@ -11,8 +11,8 @@ export const LanguageButton = () => {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger className="flex h-7 items-center rounded px-2 text-indigo-300 hover:text-indigo-200 focus:bg-white/10 focus:outline-none">
-        <span className="font-mono text-sm uppercase">{locale}</span>
+      <DropdownMenu.Trigger className="flex h-9 items-center rounded px-3 text-indigo-300 hover:text-indigo-200 focus:bg-white/10 focus:outline-none md:h-7 md:px-2">
+        <span className="font-mono uppercase md:text-sm">{locale}</span>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
@@ -24,7 +24,7 @@ export const LanguageButton = () => {
               <DropdownMenu.RadioItem
                 key={index}
                 value={id}
-                className="relative flex h-7 cursor-pointer items-center rounded border border-transparent px-2 font-mono text-sm uppercase focus:bg-white/10 focus:outline-none data-[state=checked]:text-indigo-300"
+                className="relative flex h-9 cursor-pointer items-center rounded border border-transparent px-3 font-mono uppercase focus:bg-white/10 focus:outline-none data-[state=checked]:text-indigo-300 md:h-7 md:px-2 md:text-sm"
               >
                 <DropdownMenu.ItemIndicator className="absolute inset-2 bg-indigo-400/80 blur-md" />
                 <span className="relative">{id}</span>
