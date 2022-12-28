@@ -2,6 +2,10 @@ import {createMiddlewareSupabaseClient} from '@supabase/auth-helpers-nextjs'
 import {NextResponse} from 'next/server'
 import {type NextRequest} from 'next/server'
 
+export const config = {
+  matcher: ['/operations/:path*']
+}
+
 export const middleware = async (req: NextRequest) => {
   const res = NextResponse.next()
 
@@ -30,6 +34,4 @@ export const middleware = async (req: NextRequest) => {
   return res
 }
 
-export const config = {
-  matcher: ['/operations/:path*']
-}
+export default middleware

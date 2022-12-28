@@ -5,22 +5,13 @@ type Product = {
   displayVariant: string
   displaySKU: string
   accentColor: string
+  sustainability: string
   options: {
     id: string
     name: string
     values: string[]
   }[]
-  variants: {
-    id: string
-    selectedOptions: {
-      name: string
-      value: string
-    }
-    price: {
-      amount: string
-      currencyCode: string
-    }
-  }[]
+  variants: Variant[]
   descriptionHtml: string
   featuredImage: {
     url: string
@@ -28,4 +19,5 @@ type Product = {
     height: number
     altText: string
   }
+  priceRange: {minVariantPrice: Price}
 }

@@ -3,7 +3,7 @@ export const getProductByHandle = async (handle: string): Promise<{product: Prod
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!
+      'X-Shopify-Storefront-Access-Token': process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!
     },
     body: JSON.stringify({
       query: `{
@@ -12,6 +12,12 @@ export const getProductByHandle = async (handle: string): Promise<{product: Prod
           title
           handle
           descriptionHtml
+          priceRange {
+            minVariantPrice {
+              amount 
+              currencyCode
+            }
+          }
           options(first:100) {
             id
             name
@@ -24,6 +30,18 @@ export const getProductByHandle = async (handle: string): Promise<{product: Prod
             value
           }
           displaySKU: metafield(namespace: "custom", key: "display_sku") {
+            value
+          }
+          shipping: metafield(namespace: "custom", key: "shipping") {
+            value
+          }
+          sizing: metafield(namespace: "custom", key: "sizing") {
+            value
+          }
+          sustainability: metafield(namespace: "custom", key: "sustainability") {
+            value
+          }
+          transparency: metafield(namespace: "custom", key: "transparency") {
             value
           }
           accentColor: metafield(namespace: "custom", key: "accent_color") {
@@ -54,9 +72,11 @@ export const getProductByHandle = async (handle: string): Promise<{product: Prod
       }`
     })
   })
+
   const {
     data: {productByHandle}
   } = await res.json()
+
   return {
     product: {
       ...productByHandle,
@@ -64,6 +84,10 @@ export const getProductByHandle = async (handle: string): Promise<{product: Prod
       displaySKU: productByHandle.displaySKU.value,
       displayVariant: productByHandle.displayVariant.value,
       accentColor: productByHandle.accentColor.value,
+      shipping: productByHandle.shipping?.value,
+      sustainability: productByHandle.sustainability?.value,
+      transparency: productByHandle.transparency?.value,
+      sizing: productByHandle.sizing?.value,
       variants: productByHandle.variants.edges.map((edge: any) => edge.node)
     }
   }

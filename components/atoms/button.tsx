@@ -73,6 +73,15 @@ export const Button: FC<{
           </svg>
         )}
       </div>
+      {loading && (
+        <div
+          className={`absolute inset-px flex items-center justify-center rounded-full ${
+            secondary ? 'bg-[#F9FAFB] text-slate-800 dark:bg-[#171C23] dark:text-slate-50' : 'bg-indigo-500 text-indigo-50'
+          }`}
+        >
+          <Loader />
+        </div>
+      )}
     </motion.button>
   )
 }

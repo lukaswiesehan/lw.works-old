@@ -9,6 +9,7 @@ import {LanguageButton} from '@components/atoms/language-button'
 import {ThemeButton} from '@components/atoms/theme-button'
 import {MenuIcon} from '@components/icons/menu'
 import {CloseIcon} from '@components/icons/close'
+import {CartIcon} from '@components/icons/cart'
 
 const links = [
   {href: '/work', caption: 'Work'},
@@ -21,6 +22,7 @@ export const Navigation = () => {
   const container = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
   const [open, setOpen] = useState<boolean>(false)
+  const [cart, setCart] = useState<{id: string; totalQuantity: number} | null>(null)
 
   const onMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
     setOffsetX(e.clientX - container.current?.getBoundingClientRect().left!)
@@ -30,19 +32,41 @@ export const Navigation = () => {
     setOpen(false)
   }, [pathname])
 
+  useEffect(() => {
+    const onStorageChange = () => {
+      if ('cart' in localStorage) {
+        const cart = JSON.parse(localStorage.cart)
+        setCart(cart)
+      }
+    }
+    onStorageChange()
+    window.addEventListener('storage', onStorageChange, false)
+    return () => window.removeEventListener('storage', onStorageChange)
+  }, [])
+
   return (
     <nav className="relative z-50 w-full pt-4 md:pt-6 lg:pt-10">
       <div className="fixed top-4 w-full px-4 sm:px-6 md:hidden">
-        <div className="relative z-50 flex h-12 items-center justify-between rounded-3xl border border-slate-200 bg-slate-200/50 pl-5 pr-1.5 shadow-lg shadow-black/5 backdrop-blur-lg dark:border-slate-700 dark:bg-black/70 dark:shadow-black/10">
+        <div className="relative z-50 flex h-12 items-center justify-between rounded-3xl border border-slate-200 bg-slate-100/60 pl-5 pr-1.5 shadow-lg shadow-black/5 backdrop-blur-lg dark:border-slate-700 dark:bg-black/70 dark:shadow-black/10">
           <Link href="/">
             <Logo className="h-5 text-black dark:text-white md:h-8" />
           </Link>
           <div className="absolute -bottom-px h-px w-8 overflow-y-hidden">
             <div className="mx-auto -mt-6 h-12 w-1/3 bg-white opacity-80 blur" />
           </div>
-          <Button action={() => setOpen((open) => !open)} secondary hideArrow>
-            {open ? <CloseIcon className="h-5" /> : <MenuIcon className="h-5" />}
-          </Button>
+          <div className="flex space-x-2">
+            {pathname?.split('/')[1] === 'hardware' && cart !== null && (
+              <Button hideArrow secondary href="/hardware/cart">
+                <div className="flex items-center space-x-2">
+                  <CartIcon className="h-4 opacity-70" />
+                  <span className="font-mono text-xs leading-none text-black dark:text-white">{cart.totalQuantity}</span>
+                </div>
+              </Button>
+            )}
+            <Button action={() => setOpen((open) => !open)} secondary hideArrow>
+              {open ? <CloseIcon className="h-5" /> : <MenuIcon className="h-5" />}
+            </Button>
+          </div>
         </div>
         {open && (
           <>
@@ -88,7 +112,7 @@ export const Navigation = () => {
         <motion.div
           onMouseMove={onMouseMove}
           ref={container}
-          className="group fixed top-6 flex h-12 items-center rounded-3xl border border-slate-200 bg-slate-200/50 pr-1.5 shadow-lg shadow-black/5 backdrop-blur-lg dark:border-slate-700 dark:bg-black/70 dark:shadow-black/10 lg:top-10"
+          className="group fixed top-6 flex h-12 items-center rounded-3xl border border-slate-200 bg-slate-100/60 pr-1.5 shadow-lg shadow-black/5 backdrop-blur-lg dark:border-slate-700 dark:bg-black/70 dark:shadow-black/10 lg:top-10"
         >
           <div className="absolute inset-0 overflow-hidden rounded-full">
             <motion.div
@@ -122,7 +146,21 @@ export const Navigation = () => {
             <LanguageButton />
             <ThemeButton />
           </div>
-          <Button href="/contact">Gespräch vereinbaren</Button>
+          {pathname?.split('/')[1] !== 'hardware' ? (
+            <Button href="/contact">Gespräch vereinbaren</Button>
+          ) : cart === null ? (
+            <Button href="/contact">Gespräch vereinbaren</Button>
+          ) : (
+            <Button hideArrow href="/hardware/cart">
+              <div className="-mr-1.5 flex items-center space-x-2">
+                <CartIcon className="h-4 opacity-70" />
+                <span>Warenkorb</span>
+                <span className="flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-white/25 px-1 font-mono text-xs leading-none text-white opacity-70">
+                  {cart.totalQuantity}
+                </span>
+              </div>
+            </Button>
+          )}
         </motion.div>
       </div>
     </nav>

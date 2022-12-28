@@ -17,7 +17,7 @@ export const LanguageButton = () => {
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           sideOffset={10}
-          className="relative z-50 mt-3.5 rounded-lg border border-slate-200 bg-slate-200/50 p-2 shadow-lg backdrop-blur-lg dark:border-slate-700 dark:bg-black/70 md:mt-0"
+          className="relative z-50 mt-3.5 rounded-lg border border-slate-200 bg-slate-100/60 p-2 shadow-lg backdrop-blur-lg dark:border-slate-700 dark:bg-black/70 md:mt-0"
         >
           <DropdownMenu.RadioGroup value={locale} onValueChange={setLocale}>
             {locales.map(({id}, index) => (
