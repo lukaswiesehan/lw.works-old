@@ -13,6 +13,7 @@ export const cartQuery = (cartID: string | null) => `{
           merchandise {
             ... on ProductVariant {
               title
+              sku
               product {
                 title
                 handle
@@ -65,5 +66,23 @@ export const cartQuery = (cartID: string | null) => `{
     }
     totalQuantity
     checkoutUrl
+    cost {
+      totalDutyAmount {
+        amount
+        currencyCode
+      }
+      totalTaxAmount {
+        amount
+        currencyCode
+      }
+      subtotalAmount {
+        amount
+        currencyCode
+      }
+      totalAmount {
+        amount
+        currencyCode
+      }
+    }
   }
 }`

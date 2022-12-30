@@ -6,7 +6,7 @@ import {CheckIcon} from '@components/icons/check'
 export const PopoverNote: FC<{type: 'success' | 'error'; children: ReactNode}> = ({type, children}) => {
   return (
     <motion.div
-      className="absolute left-1/2 -bottom-7 z-10 whitespace-nowrap rounded-md bg-black px-2 py-1 text-sm leading-none text-white shadow-md dark:bg-white dark:text-black"
+      className="absolute left-1/2 -bottom-8 z-10 whitespace-nowrap rounded-md bg-black px-2 py-1.5 text-sm leading-none text-white shadow-md dark:bg-white dark:text-black"
       initial={{scale: 0, translateX: '-50%'}}
       animate={{scale: 1, translateX: '-50%', originY: 0, transition: {duration: 0.3, type: 'spring'}}}
     >

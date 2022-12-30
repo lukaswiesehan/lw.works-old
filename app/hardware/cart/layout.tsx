@@ -8,7 +8,7 @@ export default function Layout({children}: {children: React.ReactNode}) {
   return (
     <main>
       <Section className="pt-32 md:pt-40 lg:pt-48">
-        <div className="mb-1 flex items-center space-x-4 font-mono uppercase text-white brightness-75 saturate-200 dark:brightness-100 dark:saturate-100 sm:mb-3">
+        <div className="mb-1 flex items-center space-x-4 font-mono uppercase text-black brightness-75 saturate-200 dark:text-white dark:brightness-100 dark:saturate-100 sm:mb-3">
           <Link
             href="/hardware"
             className="group -mx-1.5 flex items-center space-x-1 rounded-sm px-1.5 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/10"

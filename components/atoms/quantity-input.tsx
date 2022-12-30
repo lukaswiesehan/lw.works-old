@@ -1,12 +1,13 @@
 import {FC, Dispatch, SetStateAction} from 'react'
+import {Loader} from './loader'
 
-export const QuantityInput: FC<{count: number; setCount: Dispatch<SetStateAction<number>>}> = ({count, setCount}) => {
+export const QuantityInput: FC<{count: number; setCount: Dispatch<SetStateAction<number>>; loading?: boolean | false}> = ({count, setCount, loading}) => {
   return (
     <div>
       <label htmlFor="quantity" className="sr-only">
         Anzahl
       </label>
-      <div className="h-9 shrink-0 rounded-full bg-gradient-to-b from-slate-100 to-slate-200 p-px font-mono shadow shadow-black/5 dark:from-[#393C45] dark:to-[#1A1D24]">
+      <div className="relative h-9 shrink-0 rounded-full bg-gradient-to-b from-slate-100 to-slate-200 p-px font-mono shadow shadow-black/5 dark:from-[#393C45] dark:to-[#1A1D24]">
         <div className="flex space-x-px">
           <button
             aria-label="-1"
@@ -33,6 +34,11 @@ export const QuantityInput: FC<{count: number; setCount: Dispatch<SetStateAction
             +
           </button>
         </div>
+        {loading && (
+          <div className="absolute inset-px flex items-center justify-center rounded-full bg-[#F9FAFB] text-slate-800 dark:bg-[#171C23] dark:text-slate-50">
+            <Loader />
+          </div>
+        )}
       </div>
     </div>
   )

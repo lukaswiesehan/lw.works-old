@@ -55,7 +55,7 @@ export const Navigation = () => {
             <div className="mx-auto -mt-6 h-12 w-1/3 bg-white opacity-80 blur" />
           </div>
           <div className="flex space-x-2">
-            {pathname?.split('/')[1] === 'hardware' && cart !== null && (
+            {pathname?.split('/')[1] === 'hardware' && cart !== null && cart.totalQuantity > 0 && (
               <Button hideArrow secondary href="/hardware/cart">
                 <div className="flex items-center space-x-2">
                   <CartIcon className="h-4 opacity-70" />
@@ -148,7 +148,7 @@ export const Navigation = () => {
           </div>
           {pathname?.split('/')[1] !== 'hardware' ? (
             <Button href="/contact">Gespräch vereinbaren</Button>
-          ) : cart === null ? (
+          ) : cart === null || cart?.totalQuantity === 0 ? (
             <Button href="/contact">Gespräch vereinbaren</Button>
           ) : (
             <Button hideArrow href="/hardware/cart">

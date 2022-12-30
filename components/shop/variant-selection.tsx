@@ -6,12 +6,7 @@ import {PopoverNote} from '@components/atoms/popover-note'
 import {createCart} from '@utils/shopify/create-cart'
 import {QuantityInput} from '@components/atoms/quantity-input'
 import {addCartLine} from '@utils/shopify/add-cart-line'
-
-// TODO: Add all supported currency codes
-const currency = {
-  EUR: '€',
-  USD: '$'
-}
+import {currency} from '@utils/shopify/currency'
 
 export const VariantSelection: FC<{product: Product}> = ({product}) => {
   const isEqual = require('lodash.isequal')
@@ -45,7 +40,6 @@ export const VariantSelection: FC<{product: Product}> = ({product}) => {
         window.dispatchEvent(new Event('storage'))
       } else {
         const cartId = JSON.parse(localStorage.cart).id
-        console.log(variant)
         const {cart} = await addCartLine({cartId, variantId: variant.id, quantity: count})
         localStorage.cart = JSON.stringify(cart)
         window.dispatchEvent(new Event('storage'))

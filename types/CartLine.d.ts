@@ -6,6 +6,7 @@ type CartLine = {
   }[]
   merchandise: {
     title: string
+    sku: string
     product: {
       title: string
       handle: string
@@ -15,6 +16,10 @@ type CartLine = {
         height: number
         altText: string
       }
+      displayName: {value: string}
+      displaySKU: {value: string}
+      displayVariant: {value: string}
+      accentColor: {value: string}
     }
     selectedOptions: {
       name: string
