@@ -4,6 +4,7 @@ import './globals.css'
 import localFont from '@next/font/local'
 import Script from 'next/script'
 import {BlurBackground} from '@components/layout/blur-background'
+import {Footer} from '@components/layout/footer'
 
 const lato = localFont({
   variable: '--font-lato',
@@ -64,6 +65,7 @@ export default async function Layout({children}: {children: React.ReactNode}) {
         <BlurBackground />
         <Navigation />
         <div className="relative">{children}</div>
+        <Footer />
       </body>
     </html>
   )

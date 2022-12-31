@@ -17,15 +17,18 @@ export const QuantityInput: FC<{count: number; setCount: Dispatch<SetStateAction
           >
             -
           </button>
-          <input
-            id="quantity"
-            name="quantity"
-            type="number"
-            value={count}
-            disabled
-            className="h-[2.125rem] w-11 bg-[#F9FAFB] text-center text-slate-800 dark:bg-[#171C23] dark:text-slate-50"
-            aria-label="Anzahl"
-          />
+          <div className="relative">
+            <input
+              id="quantity"
+              name="quantity"
+              type="number"
+              value={count}
+              className="h-[2.125rem] w-11 rounded-none bg-[#F9FAFB] text-center text-slate-800 dark:bg-[#171C23] dark:text-slate-50"
+              aria-label="Anzahl"
+              onChange={() => {}}
+            />
+            <div className="absolute inset-0 bg-transparent" />
+          </div>
           <button
             aria-label="+1"
             className="flex h-[2.125rem] w-9 items-center justify-center rounded-r-full bg-[#F9FAFB] pb-0.5 pr-0.5 text-2xl leading-none text-slate-800/50 hover:bg-white dark:bg-[#171C23] dark:text-slate-50/50 dark:hover:bg-[#1E242B]"

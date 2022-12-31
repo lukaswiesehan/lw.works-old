@@ -15,7 +15,10 @@ export const ProductInfo: FC<{product: Product}> = ({product}) => {
   return (
     <section className="mt-16">
       <Tabs.Root value={tab} onValueChange={setTab}>
-        <Tabs.List aria-label="Produktinformationen" className="mx-auto mb-3 flex w-full max-w-screen-xl space-x-4 px-6 sm:px-8 lg:px-12">
+        <Tabs.List
+          aria-label="Produktinformationen"
+          className="relative z-10 mx-auto -mb-px flex w-full max-w-screen-xl space-x-4 overflow-x-auto px-6 pb-[0.8125rem] sm:px-8 lg:px-12"
+        >
           {tabs.map(({name, title}, index) => {
             //@ts-ignore
             if (product[name])
@@ -27,7 +30,7 @@ export const ProductInfo: FC<{product: Product}> = ({product}) => {
                 >
                   {title}
                   {tab === name && (
-                    <div className="absolute inset-x-0 z-10 mt-[3.3rem] h-px overflow-y-hidden">
+                    <div className="absolute inset-x-0 z-10 mt-[3.8rem] h-px overflow-y-hidden md:mt-[3.3rem]">
                       <div className="mx-auto -mt-6 h-12 w-2/3 opacity-80 blur" style={{backgroundColor: product.accentColor}} />
                     </div>
                   )}

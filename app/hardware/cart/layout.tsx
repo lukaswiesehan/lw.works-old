@@ -7,7 +7,7 @@ import 'server-only'
 export default function Layout({children}: {children: React.ReactNode}) {
   return (
     <main>
-      <Section className="pt-32 md:pt-40 lg:pt-48">
+      <Section className="pt-32 pb-24 md:pt-40 md:pb-32 lg:pt-48">
         <div className="mb-1 flex items-center space-x-4 font-mono uppercase text-black brightness-75 saturate-200 dark:text-white dark:brightness-100 dark:saturate-100 sm:mb-3">
           <Link
             href="/hardware"

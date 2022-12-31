@@ -18,6 +18,8 @@ export async function generateStaticParams() {
   }))
 }
 
+// TODO: Add gallery and sizing chart
+
 export default async function Product({params}: {params: {handle: string}}) {
   const {product} = await getProductByHandle(params.handle)
 
