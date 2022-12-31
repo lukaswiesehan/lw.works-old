@@ -6,7 +6,7 @@ import {Section} from '@components/layout/section'
 export default function Home() {
   return (
     <main>
-      <Section className="pt-32 md:pt-40 lg:pt-48">
+      <Section className="pt-32 pb-16 md:pt-40 md:pb-32 lg:pt-48">
         <Heading level={1} className="max-w-4xl">
           Präsentiere Dein SaaS Produkt
           <br className="hidden md:block" /> wie die Big Player
