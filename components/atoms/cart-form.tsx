@@ -54,7 +54,7 @@ export const CartForm: FC<{cartId: string; cartNote: string | null; checkoutUrl:
           label={
             <>
               Shopify darf für den Checkout notwendige Cookies in meinem Browser setzen (
-              <a className="text-indigo-500 dark:text-indigo-400" target="_blank" rel="noreferrer" href="https://www.shopify.com/legal/cookies">
+              <a className="text-indigo-500 dark:text-indigo-400" target="_blank" rel="noreferrer" href="https://www.shopify.com/de/legal/cookies">
                 mehr Infos
               </a>
               ).
