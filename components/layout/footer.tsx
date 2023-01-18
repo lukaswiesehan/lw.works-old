@@ -35,8 +35,9 @@ export const Footer = () => {
   return (
     <section>
       <div className="relative z-10 mx-auto -mb-4 w-full max-w-screen-xl px-6 sm:px-8 lg:px-12">
+        <div className="absolute h-8 w-14 bg-white blur-lg dark:bg-[#0E1117] dark:blur-md" style={{borderRadius: '50% 50%'}} />
         <svg
-          className="h-8 fill-current stroke-slate-200 text-[#F9FAFB] backdrop-blur-[2px] dark:stroke-slate-700 dark:text-[#15191F]"
+          className="relative h-8 fill-current stroke-slate-300/80 text-[#F9FAFB] dark:stroke-slate-700 dark:text-[#15191F]"
           viewBox="0 0 55 32"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +69,7 @@ export const Footer = () => {
         </div>
         <div className="relative mx-auto mt-12 flex w-full max-w-screen-xl flex-col justify-between px-6 text-sm text-slate-400 dark:text-slate-500 sm:-mt-8 sm:flex-row sm:space-y-0 sm:px-8 lg:px-12">
           <div className="order-2 mt-12 sm:order-1 sm:mt-16">
-            <p className="font-mono uppercase">&copy; Lukas Wiesehan 2023</p>
+            <p className="font-mono text-xs uppercase">&copy; Lukas Wiesehan 2023</p>
           </div>
           <div className="order-1 flex justify-between space-x-8 sm:order-2 sm:justify-start sm:space-x-16">
             {menus.map(({title, elements}, index) => (
@@ -77,7 +78,9 @@ export const Footer = () => {
                 <ul className="space-y-2">
                   {elements.map(({caption, href}, index) => (
                     <li key={index}>
-                      <Link href={href}>{caption}</Link>
+                      <Link href={href} className="hover:text-slate-500 dark:hover:text-slate-400">
+                        {caption}
+                      </Link>
                     </li>
                   ))}
                 </ul>
