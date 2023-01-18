@@ -1,8 +1,4 @@
-import {Prose} from '@components/atoms/prose'
-import {Logo} from '@components/visual/logo'
-import * as Tabs from '@radix-ui/react-tabs'
 import Link from 'next/link'
-import {FC, useState} from 'react'
 
 const menus = [
   {
