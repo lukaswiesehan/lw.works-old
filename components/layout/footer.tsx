@@ -10,7 +10,8 @@ const menus = [
     elements: [
       {caption: 'SaaS Radar', href: '/blog/saas-radar'},
       {caption: 'Technologie', href: '/blog/technology'},
-      {caption: 'Trends', href: '/blog/trends'}
+      {caption: 'Trends', href: '/blog/trends'},
+      {caption: 'Unternehmen', href: '/blog/company'}
     ]
   },
   {
