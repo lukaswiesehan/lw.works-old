@@ -33,7 +33,7 @@ const menus = [
 
 export const Footer = () => {
   return (
-    <section>
+    <section className="mt-20 pt-3 sm:mt-28 md:mt-32 lg:mt-40 xl:mt-48">
       <div className="relative z-10 mx-auto -mb-4 w-full max-w-screen-xl px-6 sm:px-8 lg:px-12">
         <div className="absolute h-8 w-14 bg-white blur-lg dark:bg-[#0E1117] dark:blur-md" style={{borderRadius: '50% 50%'}} />
         <svg
