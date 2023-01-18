@@ -6,7 +6,7 @@ import {FC, useState} from 'react'
 const tabs = [
   {name: 'shipping', title: 'Versand'},
   {name: 'sizing', title: 'Maße & Größen'},
-  {name: 'sustainability', title: 'Nachhaltigkeit'},
+  {name: 'sustainability', title: 'Material & Nachhaltigkeit'},
   {name: 'transparency', title: 'Transparenz'}
 ]
 
