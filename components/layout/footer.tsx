@@ -5,16 +5,16 @@ const menus = [
     title: 'Seiten',
     elements: [
       {caption: 'Home', href: 'https://lukaswiesehan.de/'},
-      {caption: 'Blog', href: '/blog'},
-      {caption: 'Work', href: '/work'}
+      {caption: 'Blog', href: 'https://lukaswiesehan.de/blog'},
+      {caption: 'Work', href: 'https://lukaswiesehan.de/work'}
     ]
   },
   {
     title: 'Rechtliches',
     elements: [
-      {caption: 'Kontakt', href: '/contact'},
-      {caption: 'Impressum', href: '/legal'},
-      {caption: 'Datenschutz', href: '/privacy'}
+      {caption: 'Kontakt', href: 'https://lukaswiesehan.de/contact'},
+      {caption: 'Impressum', href: 'https://lukaswiesehan.de/legal'},
+      {caption: 'Datenschutz', href: 'https://lukaswiesehan.de/privacy'}
     ]
   }
 ]

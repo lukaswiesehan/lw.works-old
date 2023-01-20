@@ -12,8 +12,8 @@ import {CloseIcon} from '@components/icons/close'
 import {CartIcon} from '@components/icons/cart'
 
 const links = [
-  {href: '/work', caption: 'Work'},
-  {href: '/blog', caption: 'Blog'},
+  {href: 'https://lukaswiesehan.de/work', caption: 'Work'},
+  {href: 'https://lukaswiesehan.de/blog', caption: 'Blog'},
   {href: '/hardware', caption: 'Hardware'}
 ]
 
