@@ -105,7 +105,7 @@ export const Navigation = () => {
       </div>
       <div className="relative mx-auto hidden w-full max-w-screen-xl items-center justify-end px-8 md:flex lg:px-12">
         <div className="absolute top-0 left-8 flex h-12 items-center lg:left-12">
-          <Link href="/">
+          <Link href="/hardware">
             <Logo className="h-8 text-black dark:text-white md:h-8" />
           </Link>
         </div>
