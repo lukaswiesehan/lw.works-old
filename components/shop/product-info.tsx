@@ -38,7 +38,7 @@ export const ProductInfo: FC<{product: Product}> = ({product}) => {
               )
           })}
         </Tabs.List>
-        <div className="relative min-h-[12rem] overflow-hidden border-t border-slate-200 pb-16 pt-8 dark:border-slate-700 md:pb-32">
+        <div className="relative overflow-hidden border-t border-slate-200 pt-8 pb-20 dark:border-slate-700 sm:pb-28 md:pb-32 lg:pb-40 xl:pb-48">
           <div className="absolute inset-0">
             <div
               className="mx-auto -mt-48 h-96 w-full max-w-screen-xl bg-[#F9FAFB] blur-3xl dark:bg-[#15191F] sm:blur-4xl"

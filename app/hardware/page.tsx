@@ -19,7 +19,7 @@ export default async function Hardware() {
           Mit diesen kleinen Masterpieces bringe ich Design in meinen Alltag. <b>Bedien&apos; Dich, wenn Du magst</b>.
         </Paragraph>
       </Section>
-      <Section className="grid grid-cols-1 gap-12 pt-24 sm:grid-cols-2 lg:grid-cols-3 xl:gap-16">
+      <Section className="grid grid-cols-1 gap-12 pt-24 pb-20 sm:grid-cols-2 sm:pb-28 md:pb-32 lg:grid-cols-3 lg:pb-40 xl:gap-16 xl:pb-48">
         {products.map((product, index) => (
           <Link href={`/hardware/${product.handle}`} key={index} className="flex space-x-4">
             <div className="relative w-4 shrink-0 py-4">

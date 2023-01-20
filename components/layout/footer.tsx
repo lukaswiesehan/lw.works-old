@@ -21,7 +21,7 @@ const menus = [
 
 export const Footer = () => {
   return (
-    <section className="mt-20 pt-3 sm:mt-28 md:mt-32 lg:mt-40 xl:mt-48">
+    <section className="pt-3">
       <div className="relative z-10 mx-auto -mb-4 w-full max-w-screen-xl px-6 sm:px-8 lg:px-12">
         <div className="absolute h-8 w-14 bg-white blur-lg dark:bg-[#0E1117] dark:blur-md" style={{borderRadius: '50% 50%'}} />
         <svg
@@ -59,7 +59,7 @@ export const Footer = () => {
           <div className="order-2 mt-12 sm:order-1 sm:mt-16">
             <p className="font-mono text-xs uppercase">&copy; Lukas Wiesehan 2023</p>
           </div>
-          <div className="order-1 flex justify-between space-x-8 sm:order-2 sm:justify-start sm:space-x-16">
+          <div className="order-1 flex space-x-8 sm:order-2 sm:space-x-16">
             {menus.map(({title, elements}, index) => (
               <div key={index}>
                 <h4 className="mb-6 text-xs font-bold uppercase tracking-wider text-indigo-500/70 dark:text-indigo-400/70 sm:mb-12">{title}</h4>
