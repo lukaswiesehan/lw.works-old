@@ -1,19 +1,20 @@
 'use client'
 import {Button} from '@components/atoms/button'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
-import {FC, useState} from 'react'
+import {FC, ReactNode, useState} from 'react'
 import {PopoverNote} from '@components/atoms/popover-note'
 import {createCart} from '@utils/shopify/create-cart'
 import {QuantityInput} from '@components/atoms/quantity-input'
 import {addCartLine} from '@utils/shopify/add-cart-line'
 import {currency} from '@utils/shopify/currency'
+import Link from 'next/link'
 
 export const VariantSelection: FC<{product: Product}> = ({product}) => {
   const isEqual = require('lodash.isequal')
   const [variant, setVariant] = useState<Variant>()
   const [count, setCount] = useState<number>(1)
   const [loading, setLoading] = useState<boolean>(false)
-  const [message, setMessage] = useState<{type: 'success' | 'error'; message: string} | null>(null)
+  const [message, setMessage] = useState<{type: 'success' | 'error'; message: string | ReactNode} | null>(null)
 
   const selectVariant = ({option, value}: {option: string; value: string}) => {
     const selectedOptions = variant ? variant.selectedOptions.map((o) => (o.name === option ? {name: option, value} : o)) : [{name: option, value}]
@@ -21,7 +22,7 @@ export const VariantSelection: FC<{product: Product}> = ({product}) => {
     setVariant(newVariant)
   }
 
-  const showMessage = (type: 'error' | 'success', message: string) => {
+  const showMessage = (type: 'error' | 'success', message: string | ReactNode) => {
     setMessage({type, message})
     setTimeout(() => setMessage(null), 2000)
   }
@@ -44,7 +45,16 @@ export const VariantSelection: FC<{product: Product}> = ({product}) => {
         localStorage.cart = JSON.stringify(cart)
         window.dispatchEvent(new Event('storage'))
       }
-      showMessage('success', 'Zum Warenkorb hinzugefügt.')
+      showMessage(
+        'success',
+        <>
+          Zum{' '}
+          <Link href="/hardware/cart">
+            <u>Warenkorb</u>
+          </Link>{' '}
+          hinzugefügt.
+        </>
+      )
     } catch (error) {
       console.log(error)
     } finally {

@@ -1,4 +1,12 @@
 {
+  "redirects": [
+    {"source": "/", "destination": "/hardware"},
+    {"source": "/blog", "destination": "https://lukaswiesehan.de/blog"},
+    {"source": "/work", "destination": "https://lukaswiesehan.de/work"},
+    {"source": "/contact", "destination": "https://lukaswiesehan.de/contact"},
+    {"source": "/legal", "destination": "https://lukaswiesehan.de/legal"},
+    {"source": "/privacy", "destination": "https://lukaswiesehan.de/privacy"}
+  ],
   "headers": [
     {
       "source": "/fonts/lato-400-latin.woff2",
@@ -10,6 +18,10 @@
     },
     {
       "source": "/fonts/sora-800-latin.woff2",
+      "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]
+    },
+    {
+      "source": "/fonts/jetbrains-mono-300-latin.woff2",
       "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]
     }
   ]

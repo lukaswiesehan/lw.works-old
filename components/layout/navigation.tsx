@@ -48,7 +48,7 @@ export const Navigation = () => {
     <nav className="relative z-50 w-full pt-4 md:pt-6 lg:pt-10">
       <div className="fixed top-4 w-full px-4 sm:px-6 md:hidden">
         <div className="relative z-50 flex h-12 items-center justify-between rounded-3xl border border-slate-200 bg-slate-100/60 pl-5 pr-1.5 shadow-lg shadow-black/5 backdrop-blur-lg dark:border-slate-700 dark:bg-black/70 dark:shadow-black/10">
-          <Link href="/">
+          <Link href="/hardware">
             <Logo className="h-5 text-black dark:text-white md:h-8" />
           </Link>
           <div className="absolute -bottom-px h-px w-8 overflow-y-hidden">

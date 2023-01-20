@@ -2,8 +2,8 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import {useState} from 'react'
 
 const locales = [
-  {id: 'de', name: 'Deutsch'},
-  {id: 'en', name: 'English'}
+  {id: 'de', name: 'Deutsch', blocked: false},
+  {id: 'en', name: 'English', blocked: true}
 ]
 
 export const LanguageButton = () => {
@@ -20,11 +20,14 @@ export const LanguageButton = () => {
           className="relative z-50 mt-3.5 rounded-lg border border-slate-200 bg-slate-100/60 p-2 shadow-lg backdrop-blur-lg dark:border-slate-700 dark:bg-black/70 md:mt-0"
         >
           <DropdownMenu.RadioGroup value={locale} onValueChange={setLocale}>
-            {locales.map(({id}, index) => (
+            {locales.map(({id, blocked}, index) => (
               <DropdownMenu.RadioItem
                 key={index}
                 value={id}
-                className="relative flex h-9 cursor-pointer items-center rounded border border-transparent px-3 font-mono uppercase focus:bg-white/30 focus:outline-none data-[state=checked]:text-indigo-500 dark:focus:bg-white/10 dark:data-[state=checked]:text-indigo-300 md:h-7 md:px-2 md:text-sm"
+                disabled={blocked}
+                className={`relative flex h-9 cursor-pointer items-center rounded border border-transparent px-3 font-mono uppercase focus:bg-white/30 focus:outline-none data-[state=checked]:text-indigo-500 dark:focus:bg-white/10 dark:data-[state=checked]:text-indigo-300 md:h-7 md:px-2 md:text-sm ${
+                  blocked ? 'cursor-not-allowed' : ''
+                }`}
               >
                 <DropdownMenu.ItemIndicator className="absolute inset-2 bg-indigo-400/80 blur-md" />
                 <span className="relative">{id}</span>

@@ -18,8 +18,6 @@ export async function generateStaticParams() {
   }))
 }
 
-// TODO: Add gallery and sizing chart
-
 export default async function Product({params}: {params: {handle: string}}) {
   const {product} = await getProductByHandle(params.handle)
 
@@ -56,11 +54,11 @@ export default async function Product({params}: {params: {handle: string}}) {
               blurDataURL={product.featuredImage.url}
             />
           </Card>
-          <div className="-mt-[18px]">
+          {/* <div className="-mt-[18px]">
             <Button secondary hideArrow>
               Galerie ansehen
             </Button>
-          </div>
+          </div> */}
         </div>
         <div className="md:col-span-2">
           <VariantSelection product={product} />

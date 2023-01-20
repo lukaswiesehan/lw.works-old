@@ -2,21 +2,11 @@ import Link from 'next/link'
 
 const menus = [
   {
-    title: 'Blog',
+    title: 'Seiten',
     elements: [
-      {caption: 'SaaS Radar', href: '/blog/saas-radar'},
-      {caption: 'Technologie', href: '/blog/technology'},
-      {caption: 'Trends', href: '/blog/trends'},
-      {caption: 'Unternehmen', href: '/blog/company'}
-    ]
-  },
-  {
-    title: 'Service',
-    elements: [
-      {caption: 'Konzept', href: '/concept'},
-      {caption: 'Design', href: '/design'},
-      {caption: 'Development', href: '/development'},
-      {caption: 'Recent Work', href: '/work'}
+      {caption: 'Home', href: 'https://lukaswiesehan.de/'},
+      {caption: 'Blog', href: '/blog'},
+      {caption: 'Work', href: '/work'}
     ]
   },
   {
@@ -24,9 +14,7 @@ const menus = [
     elements: [
       {caption: 'Kontakt', href: '/contact'},
       {caption: 'Impressum', href: '/legal'},
-      {caption: 'Datenschutz', href: '/privacy'},
-      {caption: 'AGB', href: '/terms'},
-      {caption: 'Cookies', href: '/cookies'}
+      {caption: 'Datenschutz', href: '/privacy'}
     ]
   }
 ]
