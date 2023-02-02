@@ -1,4 +1,4 @@
-export const getProductByHandle = async (handle: string): Promise<{product: Product}> => {
+export const getProductByHandle = async (handle: string): Promise<{product?: Product; error?: string}> => {
   const res = await fetch('https://lukaswiesehan.myshopify.com/api/2022-10/graphql.json', {
     method: 'POST',
     headers: {
@@ -78,6 +78,8 @@ export const getProductByHandle = async (handle: string): Promise<{product: Prod
   const {
     data: {productByHandle}
   } = await res.json()
+
+  if (!productByHandle) return {error: 'Product not found'}
 
   return {
     product: {

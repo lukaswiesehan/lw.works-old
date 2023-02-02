@@ -10,6 +10,7 @@ import Link from 'next/link'
 import {VariantSelection} from '@components/shop/variant-selection'
 import {ProductInfo} from '@components/shop/product-info'
 import {Prose} from '@components/atoms/prose'
+import {notFound} from 'next/navigation'
 // import 'server-only'
 
 // export async function generateStaticParams() {
@@ -21,6 +22,7 @@ import {Prose} from '@components/atoms/prose'
 
 export default async function Product({params}: {params: {handle: string}}) {
   const {product} = await getProductByHandle(params.handle)
+  if (!product) notFound()
 
   return (
     <main style={{minHeight: 'calc(100vh - 2rem)'}}>
