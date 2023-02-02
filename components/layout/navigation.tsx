@@ -94,7 +94,7 @@ export const Navigation = () => {
                   )
                 })}
               </ul>
-              <Button href="/contact">Gespräch vereinbaren</Button>
+              <Button href="https://lukaswiesehan.de/contact">Gespräch vereinbaren</Button>
               <div className="relative flex h-5 items-center">
                 <LanguageButton />
                 <ThemeButton />
@@ -147,9 +147,9 @@ export const Navigation = () => {
             <ThemeButton />
           </div>
           {pathname?.split('/')[1] !== 'hardware' ? (
-            <Button href="/contact">Gespräch vereinbaren</Button>
+            <Button href="https://lukaswiesehan.de/contact">Gespräch vereinbaren</Button>
           ) : cart === null || cart?.totalQuantity === 0 ? (
-            <Button href="/contact">Gespräch vereinbaren</Button>
+            <Button href="https://lukaswiesehan.de/contact">Gespräch vereinbaren</Button>
           ) : (
             <Button hideArrow href="/hardware/cart">
               <div className="-mr-1.5 flex items-center space-x-2">

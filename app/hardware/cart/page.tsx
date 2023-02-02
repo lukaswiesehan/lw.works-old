@@ -6,6 +6,9 @@ import {useEffect, useState} from 'react'
 import useSWR from 'swr'
 import {currency} from '@utils/shopify/currency'
 import {CartForm} from '@components/atoms/cart-form'
+import {Paragraph} from '@components/atoms/paragraph'
+import {Button} from '@components/atoms/button'
+import {Loader} from '@components/atoms/loader'
 
 export default function Cart() {
   const [cartId, setCartId] = useState<string | null>('')
@@ -15,12 +18,20 @@ export default function Cart() {
   }, [])
 
   const {data, error, isLoading} = useSWR(cartQuery(cartId), fetcher)
-  console.log(data)
-  if (error || data?.error) return <div>Error</div>
-  if (isLoading) return <div>Loading</div>
+
+  if (error || data?.error) return <Paragraph size="lg">Beim Laden des Warenkorbs ist ein Fehler aufgetreten...</Paragraph>
+  if (isLoading) return <Loader />
 
   const cart: Cart = data?.data?.cart
-  if (!cartId || !cart || cart.totalQuantity === 0) return <div>Empty</div>
+  if (!cartId || !cart || cart.totalQuantity === 0)
+    return (
+      <div>
+        <Paragraph size="lg" className="mb-4 max-w-md">
+          Dein Warenkorb ist leer.
+        </Paragraph>
+        <Button href="/hardware">Produkte ansehen</Button>
+      </div>
+    )
 
   return (
     <div className="relative grid grid-cols-1 gap-16 lg:grid-cols-3 xl:gap-24">
