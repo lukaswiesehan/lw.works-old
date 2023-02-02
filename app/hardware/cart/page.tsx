@@ -20,7 +20,12 @@ export default function Cart() {
   const {data, error, isLoading} = useSWR(cartQuery(cartId), fetcher)
 
   if (error || data?.error) return <Paragraph size="lg">Beim Laden des Warenkorbs ist ein Fehler aufgetreten...</Paragraph>
-  if (isLoading) return <Loader />
+  if (isLoading)
+    return (
+      <div className="flex justify-center pt-24">
+        <Loader />
+      </div>
+    )
 
   const cart: Cart = data?.data?.cart
   if (!cartId || !cart || cart.totalQuantity === 0)
