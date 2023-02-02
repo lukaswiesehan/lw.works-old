@@ -1,6 +1,7 @@
 import 'server-only'
 import {supabaseClient} from '@utils/supabase/server'
 import SupabaseListener from '@components/supabase-listener'
+import {notFound} from 'next/navigation'
 
 export const revalidate = 0
 
@@ -11,8 +12,10 @@ export const Layout = async ({children}: {children: React.ReactNode}) => {
     data: {session}
   } = await supabase.auth.getSession()
 
+  notFound()
+
   return (
-    <div className="p-4 border border-blue-500">
+    <div className="border border-blue-500 p-4">
       Operations Layout
       <SupabaseListener accessToken={session?.access_token} />
       {children}
