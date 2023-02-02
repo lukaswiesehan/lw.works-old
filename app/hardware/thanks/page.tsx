@@ -21,6 +21,9 @@ export default function Thanks() {
           Ich weiß sehr zu schätzen, dass Du mich supportest.
           <b> Ganz herzlichen Dank dafür!</b>
         </Paragraph>
+        <Paragraph size="lg" className="mt-4">
+          Du erhältst gleich eine Bestellbestätigung per Email.
+        </Paragraph>
       </Section>
     </main>
   )
