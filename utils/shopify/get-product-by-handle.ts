@@ -59,6 +59,8 @@ export const getProductByHandle = async (handle: string): Promise<{product: Prod
                   amount
                   currencyCode
                 }
+                availableForSale
+                currentlyNotInStock
               }
             }
           }

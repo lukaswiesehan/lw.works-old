@@ -5,4 +5,6 @@ type Variant = {
     value: string
   }[]
   price: Price
+  availableForSale: boolean
+  currentlyNotInStock: boolean
 }

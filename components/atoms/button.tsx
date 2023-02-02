@@ -25,6 +25,8 @@ export const Button: FC<{
     hover: disabled ? {} : {x: 0, transition: {duration: transitionDuration}}
   }
 
+  const disabledStyle =
+    'relative cursor-not-allowed h-9 flex-shrink-0 rounded-full bg-gradient-to-b from-slate-100 to-slate-200 dark:from-[#393C45] dark:to-[#1A1D24] p-px shadow shadow-black/5'
   const primaryStyle =
     'relative h-9 flex-shrink-0 rounded-full bg-gradient-to-b from-indigo-400 to-indigo-500 p-px shadow shadow-indigo-500/25 focus:outline-none focus:ring-1 focus:ring-white/30'
   const secondaryStyle =
@@ -32,7 +34,7 @@ export const Button: FC<{
 
   return (
     <motion.button
-      className={secondary ? secondaryStyle : primaryStyle}
+      className={disabled ? disabledStyle : secondary ? secondaryStyle : primaryStyle}
       type={submit ? 'submit' : 'button'}
       initial="rest"
       whileHover="hover"
@@ -42,13 +44,15 @@ export const Button: FC<{
     >
       <div
         className={`flex h-full items-center space-x-2 rounded-full ${
-          secondary
+          disabled
+            ? 'bg-[#F9FAFB] text-black/50 dark:bg-[#171C23] dark:text-white/50'
+            : secondary
             ? 'bg-[#F9FAFB] text-slate-800 hover:bg-white dark:bg-[#171C23] dark:text-slate-50 dark:hover:bg-[#1E242B]'
             : 'bg-indigo-500 text-indigo-50 hover:bg-[#7375EE]'
-        } font-bold  ${hideArrow ? 'px-4' : 'pl-4 pr-2.5'}`}
+        } font-bold  ${hideArrow || disabled ? 'px-4' : 'pl-4 pr-2.5'}`}
       >
         <span className="dark:drop-shadow">{children}</span>
-        {!hideArrow && (
+        {!hideArrow && !disabled && (
           <svg
             height="10"
             viewBox="0 0 20 10"

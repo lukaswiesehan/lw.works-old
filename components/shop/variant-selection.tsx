@@ -82,6 +82,16 @@ export const VariantSelection: FC<{product: Product}> = ({product}) => {
             </ToggleGroup.Root>
           </div>
         ))}
+        <p className="mt-2 text-sm">
+          {!variant && <span>Bitte auswählen.</span>}
+          {variant && !variant.availableForSale && <span>Leider nicht verfügbar.</span>}
+          {variant && variant.availableForSale && !variant.currentlyNotInStock && (
+            <span className="text-emerald-600 dark:text-emerald-300">Auf Lager.</span>
+          )}
+          {variant && variant.availableForSale && variant.currentlyNotInStock && (
+            <span className="text-emerald-600 dark:text-emerald-300">Wird für Dich produziert.</span>
+          )}
+        </p>
       </div>
       <div>
         <div className="sm:flex sm:items-center md:flex-col md:items-start md:space-y-4 lg:flex-row lg:items-center lg:space-y-0">
@@ -102,7 +112,7 @@ export const VariantSelection: FC<{product: Product}> = ({product}) => {
           <div className="flex space-x-2">
             <QuantityInput count={count} setCount={setCount} />
             <div className="relative">
-              <Button action={addToCart} loading={loading}>
+              <Button action={addToCart} loading={loading} disabled={!variant || !variant.availableForSale}>
                 In den Warenkorb
               </Button>
               {message && <PopoverNote type={message.type}>{message.message}</PopoverNote>}
