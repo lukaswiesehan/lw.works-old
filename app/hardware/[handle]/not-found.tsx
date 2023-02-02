@@ -1,10 +1,7 @@
-'use client'
-
 import {Button} from '@components/atoms/button'
 import {Heading} from '@components/atoms/heading'
 import {Paragraph} from '@components/atoms/paragraph'
 import {Section} from '@components/layout/section'
-import {useEffect} from 'react'
 
 export default function NotFound() {
   return (
