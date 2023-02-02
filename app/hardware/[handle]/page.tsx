@@ -1,4 +1,4 @@
-import {Button} from '@components/atoms/button'
+//import {Button} from '@components/atoms/button'
 import {Card} from '@components/atoms/card'
 import {Heading} from '@components/atoms/heading'
 import {ArrowIcon} from '@components/icons/arrow'
@@ -10,6 +10,7 @@ import Link from 'next/link'
 import {VariantSelection} from '@components/shop/variant-selection'
 import {ProductInfo} from '@components/shop/product-info'
 import {Prose} from '@components/atoms/prose'
+import 'server-only'
 
 export async function generateStaticParams() {
   const {products} = await getProducts()
@@ -22,7 +23,7 @@ export default async function Product({params}: {params: {handle: string}}) {
   const {product} = await getProductByHandle(params.handle)
 
   return (
-    <main>
+    <main style={{minHeight: 'calc(100vh - 2rem)'}}>
       <Section className="grid grid-cols-1 pt-24 sm:pt-32 md:grid-cols-3 md:pt-40 lg:pt-48">
         <div className="md:col-span-2">
           <div

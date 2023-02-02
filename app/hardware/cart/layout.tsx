@@ -6,7 +6,7 @@ import 'server-only'
 
 export default function Layout({children}: {children: React.ReactNode}) {
   return (
-    <main>
+    <main style={{minHeight: 'calc(100vh - 2rem)'}}>
       <Section className="pt-32 pb-20 sm:pb-28 md:pt-40 md:pb-32 lg:pt-48 lg:pb-40 xl:pb-48">
         <div className="mb-1 flex items-center space-x-4 font-mono uppercase text-black brightness-75 saturate-200 dark:text-white dark:brightness-100 dark:saturate-100 sm:mb-3">
           <Link

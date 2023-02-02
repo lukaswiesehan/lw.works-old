@@ -12,7 +12,7 @@ export default async function Hardware() {
   const {products} = await getProducts()
 
   return (
-    <main>
+    <main style={{minHeight: 'calc(100vh - 2rem)'}}>
       <Section className="pt-32 md:pt-40 lg:pt-48">
         <Heading level={1}>Hardware</Heading>
         <Paragraph size="lg" className="mt-12 max-w-md">
