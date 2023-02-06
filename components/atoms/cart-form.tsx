@@ -24,15 +24,15 @@ export const CartForm: FC<{cartId: string; cartNote: string | null; checkoutUrl:
     }
 
     try {
+      setLoading(true)
+      let win = window.open(undefined, '_self')
       if (formData.comment != '') {
-        setLoading(true)
         const {cart} = await updateCartNote({cartId, note: formData.comment})
         localStorage.cart = JSON.stringify(cart)
         window.dispatchEvent(new Event('storage'))
-        setLoading(false)
         mutate(cartQuery(cartId))
       }
-      window.open(checkoutUrl)
+      win!.location = checkoutUrl
     } catch (error) {
       console.log(error)
     }
