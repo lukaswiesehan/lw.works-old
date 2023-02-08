@@ -5,7 +5,7 @@ const menus = [
     title: 'Seiten',
     elements: [
       {caption: 'Home', href: 'https://lukaswiesehan.de/'},
-      {caption: 'Blog', href: 'https://lukaswiesehan.de/blog'},
+      {caption: 'Blog', href: '/blog'},
       {caption: 'Work', href: 'https://lukaswiesehan.de/work'}
     ]
   },

@@ -1,24 +1,14 @@
-//import {Button} from '@components/atoms/button'
 import {Card} from '@components/atoms/card'
 import {Heading} from '@components/atoms/heading'
 import {ArrowIcon} from '@components/icons/arrow'
 import {Section} from '@components/layout/section'
 import {getProductByHandle} from '@utils/shopify/get-product-by-handle'
-// import {getProducts} from '@utils/shopify/get-products'
 import Image from 'next/image'
 import Link from 'next/link'
 import {VariantSelection} from '@components/shop/variant-selection'
 import {ProductInfo} from '@components/shop/product-info'
 import {Prose} from '@components/atoms/prose'
 import {notFound} from 'next/navigation'
-// import 'server-only'
-
-// export async function generateStaticParams() {
-//   const {products} = await getProducts()
-//   return products.map((product) => ({
-//     handle: product.handle
-//   }))
-// }
 
 export default async function Product({params}: {params: {handle: string}}) {
   const {product} = await getProductByHandle(params.handle)

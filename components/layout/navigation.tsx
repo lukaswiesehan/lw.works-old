@@ -13,7 +13,7 @@ import {CartIcon} from '@components/icons/cart'
 
 const links = [
   {href: 'https://lukaswiesehan.de/work', caption: 'Work'},
-  {href: 'https://lukaswiesehan.de/blog', caption: 'Blog'},
+  {href: '/blog', caption: 'Blog'},
   {href: '/hardware', caption: 'Hardware'}
 ]
 
