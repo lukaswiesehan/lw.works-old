@@ -48,6 +48,9 @@ export default async function BlogPost({params}: {params: {slug: string}}) {
             <Author {...post.author} />
           </div>
         </div>
+        <div className="mt-8 lg:hidden">
+          <Author {...post.author} />
+        </div>
       </Section>
       <section className="relative mt-12 border-t border-slate-200 pt-12 pb-20 dark:border-slate-700 sm:pb-28 md:pb-32 lg:mt-16 lg:pt-16 lg:pb-40 xl:pb-48">
         <div className="absolute inset-0 overflow-hidden">
