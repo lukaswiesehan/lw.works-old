@@ -1,7 +1,6 @@
 {
   "redirects": [
     {"source": "/", "destination": "/hardware"},
-    {"source": "/blog", "destination": "https://lukaswiesehan.de/blog"},
     {"source": "/work", "destination": "https://lukaswiesehan.de/work"},
     {"source": "/contact", "destination": "https://lukaswiesehan.de/contact"},
     {"source": "/legal", "destination": "https://lukaswiesehan.de/legal"},
