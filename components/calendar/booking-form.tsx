@@ -130,6 +130,7 @@ export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
               : ''}
           </ToggleGroup.Root>
           <div className="flex grow flex-col items-start justify-end space-y-4">
+            <div></div>
             <TextArea
               id="comment"
               label="Worum geht es?"
