@@ -8,13 +8,19 @@ import {TextArea} from '@components/atoms/textarea'
 import {Checkbox} from '@components/atoms/checkbox'
 import {findFirstSlot} from '@utils/dates/find-first-slot'
 import * as Tooltip from '@radix-ui/react-tooltip'
+import {Input} from '@components/atoms/input'
 
 export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
   const firstSlot = findFirstSlot(weeks)
   const [week, setWeek] = useState<number>(firstSlot.week)
   const [day, setDay] = useState<string>(firstSlot.day.toString())
   const [slot, setSlot] = useState<string>('')
-  const [formData, setFormData] = useState<{comment: string; consent: boolean}>({comment: '', consent: false})
+  const [formData, setFormData] = useState<{name: string; email: string; comment: string; consent: boolean}>({
+    name: '',
+    email: '',
+    comment: '',
+    consent: false
+  })
   const [loading, setLoading] = useState<boolean>(false)
 
   const selectWeek = (direction: number) => {
@@ -80,9 +86,11 @@ export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
           >
             <Tooltip.Provider delayDuration={0}>
               <Tooltip.Root>
-                <Tooltip.Trigger className="flex h-full w-full flex-col items-center justify-center">
-                  <span className="text-sm opacity-75">{weekday}</span>
-                  <span className="font-mono text-xl sm:text-2xl">{dayOfMonth}</span>
+                <Tooltip.Trigger asChild>
+                  <div className="flex h-full w-full flex-col items-center justify-center">
+                    <span className="text-sm opacity-75">{weekday}</span>
+                    <span className="font-mono text-xl sm:text-2xl">{dayOfMonth}</span>
+                  </div>
                 </Tooltip.Trigger>
                 <Tooltip.Portal>
                   <Tooltip.Content
@@ -130,7 +138,28 @@ export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
               : ''}
           </ToggleGroup.Root>
           <div className="flex grow flex-col items-start justify-end space-y-4">
-            <div></div>
+            <Input
+              id="name"
+              label="Name"
+              placeholder="Dein Name"
+              type="string"
+              required={true}
+              data={formData}
+              setData={setFormData}
+              className="w-full"
+              autocomplete="name"
+            />
+            <Input
+              id="name"
+              label="Email-Adresse"
+              placeholder="Deine Email-Adresse"
+              type="email"
+              required={true}
+              data={formData}
+              setData={setFormData}
+              className="w-full"
+              autocomplete="email"
+            />
             <TextArea
               id="comment"
               label="Worum geht es?"
