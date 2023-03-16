@@ -18,7 +18,7 @@ export const Checkbox: FC<{
   }
 
   return (
-    <div className="flex w-full max-w-md space-x-2 text-sm">
+    <div className="flex w-full space-x-2 text-sm">
       <RadixCheckbox.Root
         className="relative h-4 w-4 shrink-0 overflow-hidden rounded border border-black/10 bg-slate-200/20 focus:outline-none focus:ring-1 focus:ring-black/10 dark:border-white/20 dark:bg-slate-200/5 dark:focus:ring-white/30"
         defaultChecked
