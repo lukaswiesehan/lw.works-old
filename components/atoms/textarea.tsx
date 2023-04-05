@@ -28,7 +28,7 @@ export const TextArea: FC<{
         value={data[id]}
         onChange={handleChange}
         required={required}
-        className="h-full w-full resize-none rounded-lg border border-black/10 bg-slate-200/20 px-4 py-2 text-black placeholder-black/60 backdrop-blur-xl focus:outline-none focus:ring-1 focus:ring-black/10 dark:border-white/20 dark:bg-slate-200/5 dark:text-white dark:placeholder-white/50 dark:focus:ring-white/30"
+        className="h-full w-full resize-none rounded-lg border border-black/10 bg-slate-200/20 px-4 py-2 text-black placeholder-black/60 backdrop-blur-xl focus:outline-none focus:ring-1 focus:ring-black/10 dark:border-white/20 dark:bg-slate-200/5 dark:text-white dark:placeholder-white/60 dark:focus:ring-white/30"
       />
     </div>
   )

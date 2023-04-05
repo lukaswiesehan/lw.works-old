@@ -1,5 +1,5 @@
 'use client'
-import {FC, useState} from 'react'
+import {FC, FormEvent, useState} from 'react'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import {ArrowIcon} from '@components/icons/arrow'
 import {format} from 'date-fns'
@@ -12,15 +12,16 @@ import {Input} from '@components/atoms/input'
 
 export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
   const firstSlot = findFirstSlot(weeks)
-  const [week, setWeek] = useState<number>(firstSlot.week)
-  const [day, setDay] = useState<string>(firstSlot.day.toString())
-  const [slot, setSlot] = useState<string>('')
-  const [formData, setFormData] = useState<{name: string; email: string; comment: string; consent: boolean}>({
+  const initialFormData = {
     name: '',
     email: '',
     comment: '',
     consent: false
-  })
+  }
+  const [week, setWeek] = useState<number>(firstSlot.week)
+  const [day, setDay] = useState<string>(firstSlot.day.toString())
+  const [slot, setSlot] = useState<string>('')
+  const [formData, setFormData] = useState<{name: string; email: string; comment: string; consent: boolean}>(initialFormData)
   const [loading, setLoading] = useState<boolean>(false)
 
   const selectWeek = (direction: number) => {
@@ -31,6 +32,10 @@ export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
     } else {
       setDay('')
     }
+  }
+
+  const submitForm = (e: FormEvent) => {
+    e.preventDefault()
   }
 
   return (
@@ -107,36 +112,31 @@ export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
           </ToggleGroup.Item>
         ))}
       </ToggleGroup.Root>
-
-      <form
-        className="mt-16 flex flex-col items-end space-y-4"
-        onSubmit={(e) => {
-          e.preventDefault()
-        }}
-      >
-        <div className="flex w-full space-x-16">
-          <ToggleGroup.Root
-            type="single"
-            className="w-36 shrink-0 space-y-2"
-            value={slot}
-            orientation="vertical"
-            onValueChange={(value) => setSlot(value)}
-          >
-            {week && day
-              ? weeks[week].days[Number(day)].slots.map(({startAt, endAt}, index) => (
-                  <ToggleGroup.Item
-                    key={index}
-                    value={index.toString()}
-                    aria-label={`$`}
-                    className="flex w-full justify-center space-x-1 rounded-full border border-slate-500 bg-slate-800/5 py-1 px-3 font-mono uppercase text-slate-600 hover:bg-slate-300/5 focus:bg-white/20 focus:outline-none data-[state=on]:border-black data-[state=on]:bg-black data-[state=on]:text-white data-[state=on]:focus:bg-black dark:border-slate-400 dark:bg-white/10 dark:text-slate-300 dark:hover:bg-white/20 dark:data-[state=on]:border-white dark:data-[state=on]:bg-white dark:data-[state=on]:text-black dark:data-[state=on]:focus:bg-white"
-                  >
-                    <span>{format(startAt, 'HH:mm')}</span>
-                    <span>-</span>
-                    <span>{format(endAt, 'HH:mm')}</span>
-                  </ToggleGroup.Item>
-                ))
-              : ''}
-          </ToggleGroup.Root>
+      <form className="mt-16 flex flex-col items-end space-y-4" onSubmit={submitForm}>
+        <div className="flex w-full flex-col gap-16 sm:flex-row">
+          <ul className="relative text-slate-400 dark:text-slate-500 sm:mt-2.5 sm:w-56 sm:shrink-0">
+            {[...new Array(6)].map((element, index) => (
+              <li key={index} className={`flex ${index === 5 ? '' : 'h-12'}`}>
+                <div className="-mt-1.5 w-12 shrink-0 whitespace-nowrap font-mono text-xs leading-none">{13 + index}:00</div>
+                <div className="grow border-t border-slate-200 dark:border-slate-800" />
+              </li>
+            ))}
+            <ToggleGroup.Root type="single" value={slot} orientation="vertical" onValueChange={(value) => setSlot(value)}>
+              {week && day
+                ? weeks[week].days[Number(day)].slots.map(({startAt, endAt}, index) => {
+                    return (
+                      <ToggleGroup.Item
+                        key={index}
+                        value={index.toString()}
+                        aria-label={`${format(startAt, 'HH:mm')} - ${format(endAt, 'HH:mm')}`}
+                        className="absolute left-16 space-x-1 whitespace-nowrap rounded-full border border-slate-500 bg-slate-800/5 px-2.5 text-left font-mono text-sm uppercase text-slate-600 backdrop-blur-sm hover:bg-slate-300/5 focus:bg-white/20 focus:outline-none data-[state=on]:border-black data-[state=on]:bg-black data-[state=on]:text-white data-[state=on]:focus:bg-black dark:border-slate-400 dark:bg-white/10 dark:text-slate-300 dark:hover:bg-white/20 dark:data-[state=on]:border-white dark:data-[state=on]:bg-white dark:data-[state=on]:text-black dark:data-[state=on]:focus:bg-white"
+                        style={{...getTimeslotStyle(startAt, endAt)}}
+                      >{`${format(startAt, 'HH:mm')} - ${format(endAt, 'HH:mm')}`}</ToggleGroup.Item>
+                    )
+                  })
+                : ''}
+            </ToggleGroup.Root>
+          </ul>
           <div className="flex grow flex-col items-start justify-end space-y-4">
             <Input
               id="name"
@@ -150,7 +150,7 @@ export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
               autocomplete="name"
             />
             <Input
-              id="name"
+              id="email"
               label="Email-Adresse"
               placeholder="Deine Email-Adresse"
               type="email"
@@ -194,4 +194,13 @@ export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
       </form>
     </div>
   )
+}
+
+const getTimeslotStyle = (start: Date, end: Date) => {
+  const startQuarters = start.getHours() * 4 + start.getMinutes() / 15 - 52
+  const endQuarters = end.getHours() * 4 + end.getMinutes() / 15 - 52
+  return {
+    top: `${startQuarters * 0.75}rem`,
+    height: `${(endQuarters - startQuarters) * 0.75}rem`
+  }
 }
