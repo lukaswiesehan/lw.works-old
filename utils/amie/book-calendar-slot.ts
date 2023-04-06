@@ -1,4 +1,4 @@
-export const getSharedCalendar = async ({
+export const bookCalendarSlot = async ({
   shareId,
   name,
   email,

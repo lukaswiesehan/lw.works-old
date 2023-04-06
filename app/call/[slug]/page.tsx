@@ -21,7 +21,7 @@ export default async function BookingPage({params}: {params: {slug: string}}) {
         <Heading level={1} className="mb-16">
           {sharedCalendar.title}
         </Heading>
-        <BookingForm weeks={weeks} data-superjson />
+        <BookingForm weeks={weeks} id={sharedCalendar.id} data-superjson />
       </Section>
     </main>
   )

@@ -10,7 +10,7 @@ import {findFirstSlot} from '@utils/dates/find-first-slot'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import {Input} from '@components/atoms/input'
 
-export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
+export const BookingForm: FC<{weeks: CalendarWeek[]; id: string}> = ({weeks, id}) => {
   const firstSlot = findFirstSlot(weeks)
   const initialFormData = {
     name: '',
@@ -23,6 +23,7 @@ export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
   const [slot, setSlot] = useState<string>('')
   const [formData, setFormData] = useState<{name: string; email: string; comment: string; consent: boolean}>(initialFormData)
   const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string>('')
 
   const selectWeek = (direction: number) => {
     const newWeek = week + direction
@@ -34,8 +35,35 @@ export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
     }
   }
 
-  const submitForm = (e: FormEvent) => {
+  const submitForm = async (e: FormEvent) => {
     e.preventDefault()
+    try {
+      if (day === '') throw {message: 'Bitte wähle einen Tag aus.'}
+      if (slot === '') throw {message: 'Bitte wähle eine Uhrzeit aus.'}
+      setLoading(true)
+      setError('')
+      const selectedSlot = weeks[week].days[Number(day)].slots[Number(slot)]
+      const response = await fetch('/api/book-call', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          shareId: id,
+          name: formData.name,
+          email: formData.email,
+          comment: formData.comment,
+          startAt: selectedSlot.startAt,
+          endAt: selectedSlot.endAt
+        })
+      })
+      const data = await response.json()
+      console.log(data)
+    } catch (error) {
+      //@ts-ignore
+      setError(error?.message || 'Leider ist bei der Anfrage ein Fehler aufgetreten.')
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -182,6 +210,7 @@ export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
                 }
                 data={formData}
                 setData={setFormData}
+                required
               />
             </div>
           </div>
@@ -191,6 +220,7 @@ export const BookingForm: FC<{weeks: CalendarWeek[]}> = ({weeks}) => {
             <span>Gespräch vereinbaren</span>
           </div>
         </Button>
+        {error && <p className="text-sm text-rose-500 dark:text-rose-400">{error}</p>}
       </form>
     </div>
   )
